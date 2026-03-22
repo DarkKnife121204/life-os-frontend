@@ -1,4 +1,4 @@
-import Sidebar from '../widgets/Sidebar';
+import Sidebar from '../components/Sidebar.tsx';
 
 export default function Layout({ children }: any) {
     return (

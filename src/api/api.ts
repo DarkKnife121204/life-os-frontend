@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getToken } from "../utils/token";
+import { getToken } from "../lib/token.ts";
 
 const api = axios.create({
     baseURL: "/api",

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { login } from "../services/auth";
-import { setToken } from "../utils/token";
+import { login } from "../api/auth.ts";
+import { setToken } from "../lib/token.ts";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../app/providers/ToastProvider";
 
