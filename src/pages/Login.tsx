@@ -1,49 +1,67 @@
 import { useState } from "react";
+import { login } from "../services/auth";
+import { setToken } from "../utils/token";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "../app/providers/ToastProvider";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const { showToast } = useToast();
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        console.log({
-            email,
-            password,
-        });
+        setLoading(true);
 
-        // тут будет axios -> /api/login
+        const res = await login(email, password);
+
+        setLoading(false);
+
+        if (!res.success) {
+            showToast({
+                message: res.message || "Login error",
+                status: res.status,
+            });
+            return;
+        }
+
+        setToken(res.token);
+        navigate("/dashboard");
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-900">
-            <form
-                onSubmit={handleSubmit}
-                className="bg-gray-800 p-8 rounded-2xl w-full max-w-sm"
+        <div className="min-h-screen font-[Orbitron] flex items-center justify-center bg-gradient-to-bl from-dark via-neutral-950 to-fuchsia-950">
+            <form onSubmit={handleSubmit}
+                  className="flex flex-col items-center justify-center px-12 py-10 rounded-3xl bg-dark backdrop-blur-xl border border-fuchsia-950
+                    [box-shadow:0_0_15px_var(--color-purple),0_0_40px_var(--color-accent),0_0_80px_#4c0033]"
             >
-                <h1 className="text-white text-2xl mb-6">Вход</h1>
-
+                <div className="absolute inset-0 rounded-3xl blur-2xl opacity-40 bg-violet-500/20 -z-10"></div>
                 <input
                     type="email"
                     placeholder="Email"
-                    className="w-full mb-4 p-3 rounded bg-gray-700 text-white"
+                    className="w-full mb-4 p-3 rounded bg-slate-800 text-white"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <input
                     type="password"
-                    placeholder="Пароль"
-                    className="w-full mb-6 p-3 rounded bg-gray-700 text-white"
+                    placeholder="Password"
+                    className="w-full mb-6 p-3 rounded bg-gray-800 text-white"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
                 <button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded"
+                    disabled={loading}
+                    className="w-full bg-violet-700 hover:bg-violet-800 text-white p-3 rounded cursor-pointer"
                 >
-                    Войти
+                    Login
                 </button>
             </form>
         </div>

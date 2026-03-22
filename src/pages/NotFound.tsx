@@ -11,7 +11,7 @@ export default function NotFound() {
                 </h1>
 
                 <p className="relative mt-4 text-lg text-rose-200 font-[Orbitron] tracking-wide opacity-80">
-                    Страница не найдена
+                    Page not found
                 </p>
             </div>
         </div>
