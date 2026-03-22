@@ -1,7 +1,7 @@
 export default function NotFound() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-bl from-black via-zinc-950 to-rose-950 text-white">
-            <div className="flex flex-col items-center justify-center px-12 py-10 rounded-3xl bg-[#020617]/70 backdrop-blur-xl border
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-bl from-dark via-neutral-950 to-rose-950 text-white">
+            <div className="flex flex-col items-center justify-center px-12 py-10 rounded-3xl bg-dark backdrop-blur-xl border
                  border-rose-500/20 [box-shadow:0_0_15px_#f87171,0_0_40px_#ef4444,0_0_80px_#b91c1c]">
 
                 <div className="absolute inset-0 rounded-3xl blur-2xl opacity-40 bg-rose-500/20"></div>
