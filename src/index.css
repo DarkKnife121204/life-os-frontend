@@ -6,6 +6,8 @@
     --color-accent: #FF00F0;
     --color-purple: #9900BB;
     --color-deep: #0a3d48;
+    --color-backDark: #020617;
+    --color-backDeep: #001a1f;
 }
 
 @keyframes slide-in {
