@@ -3,7 +3,12 @@ import { login } from "../api/auth.ts";
 import { setToken } from "../lib/token.ts";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../app/providers/ToastProvider";
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import EmailIcon from '../components/icons/email.svg?react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import LockIcon from '../components/icons/lock.svg?react';
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -34,36 +39,80 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen font-[Orbitron] flex items-center justify-center bg-gradient-to-bl from-dark via-neutral-950 to-fuchsia-950">
-            <form onSubmit={handleSubmit}
-                  className="flex flex-col items-center justify-center px-12 py-10 rounded-3xl bg-dark backdrop-blur-xl border border-fuchsia-950
-                    [box-shadow:0_0_15px_var(--color-purple),0_0_40px_var(--color-accent),0_0_80px_#4c0033]"
-            >
-                <div className="absolute inset-0 rounded-3xl blur-2xl opacity-40 bg-violet-500/20 -z-10"></div>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    className="w-full mb-4 p-3 mx-5 rounded bg-slate-800 text-white"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+        <div className="min-h-screen font-[Orbitron] flex items-center justify-center bg-[#030712] text-white">
+            <div className="w-full max-w-[600px] px-6">
+                <div className="text-center mb-12">
+                    <h1 className="text-6xl font-bold tracking-wide">
+                        Life<span className="text-primary">OS</span>
+                    </h1>
+                </div>
 
-                <input
-                    type="password"
-                    placeholder="Password"
-                    className="w-full mb-6 p-3 mx-5 rounded bg-gray-800 text-white"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                <form onSubmit={handleSubmit} className="relative w-full rounded-2xl px-16 py-12 bg-[#050816]/95 border border-primary/25 shadow-[0_0_25px_rgba(0,255,255,0.10)]">
+                    <div className="text-center mb-10">
+                        <h2 className="text-4xl font-bold mb-4">
+                            Welcome back
+                        </h2>
+                        <p className="text-cyan-100/50 text-lg">
+                            Sign in to continue to your account
+                        </p>
+                    </div>
 
-                <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-violet-700 hover:bg-violet-800 text-white p-3 rounded cursor-pointer"
-                >
-                    Login
-                </button>
-            </form>
+                    <div className="mb-7">
+                        <label className="block mb-3 text-sm text-white/90">
+                            Email
+                        </label>
+
+                        <div className="relative">
+                            <span className="absolute left-5 top-1/2 -translate-y-1/2 text-primary text-2xl h-min">
+                                <EmailIcon className="w-7 h-7"></EmailIcon>
+                            </span>
+
+                            <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}
+                                className="w-full h-16 pl-16 pr-5 rounded-xl bg-[#020617] border border-primary/20 text-white placeholder:text-cyan-100/40 outline-none
+                                    focus:border-primary/70 focus:shadow-[0_0_18px_rgba(0,255,255,0.25)] transition"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="mb-4">
+                        <label className="block mb-3 text-sm text-white/90">
+                            Password
+                        </label>
+
+                        <div className="relative">
+                            <span className="absolute left-5 top-1/2 -translate-y-1/2 text-primary text-3xl h-min">
+                                <LockIcon className="w-6 h-6"></LockIcon>
+                            </span>
+
+                            <input
+                                type="password"
+                                placeholder="Enter your password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full h-16 pl-16 pr-5 rounded-xl bg-black/20 border border-primary/20 text-white placeholder:text-cyan-100/40
+                                    outline-none focus:border-primary/70 focus:shadow-[0_0_18px_rgba(0,255,255,0.25)] transition
+                                "
+                            />
+                        </div>
+                    </div>
+
+                    <div className="flex justify-end mb-10">
+                        <button type="button" className="text-primary text-sm hover:text-white transition">
+                            Forgot password?
+                        </button>
+                    </div>
+
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full h-16 rounded-xl border border-primary text-primary font-bold text-lg bg-primary/5 shadow-[0_0_20px_rgba(0,255,255,0.35)]
+                            hover:bg-primary hover:text-dark disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition
+                        "
+                    >
+                        {loading ? "Signing in..." : "Sign In"}
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }

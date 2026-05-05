@@ -19,17 +19,43 @@ export default function Toast({ message, status, onClose }: ToastProps) {
         }, 10000);
 
         return () => clearTimeout(timer);
-    }, []);
+    }, [onClose]);
 
     return (
         <div
-            className={`font-[Orbitron] bg-dark border border-red-500/40 text-red-400 px-5 py-4 rounded-xl shadow-lg
-                [box-shadow:0_0_5px_#f87171,0_0_10px_#ef4444,0_0_15px_#b91c1c]
-                ${closing ? "animate-slide-out" : "animate-slide-in"}`}
+            className={`font-[Orbitron] w-56 rounded-2xl border border-red-500/40 bg-[#090912]/95 px-5 py-4 text-red-300
+                backdrop-blur-xl shadow-[0_0_25px_rgba(239,68,68,0.35)] ${closing ? "animate-slide-out" : "animate-slide-in"}
+            `}
         >
-            <div className="flex items-center gap-2">
-                {status && <span>[{status}]</span>}
-                <span>{message}</span>
+            <div className="flex items-start gap-4">
+                <div className="flex-1">
+                    <div className="mb-1 flex items-center justify-between gap-3">
+                        <h3 className="text-sm font-bold tracking-wider text-red-400">
+                            Login error
+                        </h3>
+
+                        {status && (
+                            <span className="text-xs text-red-400/60">
+                                {status}
+                            </span>
+                        )}
+                    </div>
+
+                    <p className="text-xs leading-relaxed text-red-200/80">
+                        {message}
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    onClick={() => {
+                        setClosing(true);
+                        setTimeout(() => onClose?.(), 300);
+                    }}
+                    className="text-red-400/50 transition hover:text-red-300 text-3xl"
+                >
+                    ×
+                </button>
             </div>
         </div>
     );
