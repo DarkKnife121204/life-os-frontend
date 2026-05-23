@@ -107,8 +107,8 @@ export default function ActivityChart({ data }: ActivityChartProps) {
     }, [data]);
 
     return (
-        <div className="relative h-[210px]">
-            <div className="absolute left-0 top-0 bottom-8 w-12 flex flex-col justify-between text-zinc-400 text-sm">
+        <div className="relative h-[185px] overflow-hidden">
+            <div className="absolute left-0 top-0 bottom-8 w-9 md:w-12 flex flex-col justify-between text-zinc-400 text-[11px] md:text-sm">
                 <span>100%</span>
                 <span>75%</span>
                 <span>50%</span>
@@ -116,12 +116,9 @@ export default function ActivityChart({ data }: ActivityChartProps) {
                 <span>0%</span>
             </div>
 
-            <canvas
-                ref={canvasRef}
-                className="absolute left-16 right-0 top-0 h-[185px] w-[calc(100%-4rem)]"
-            />
+            <canvas ref={canvasRef} className="absolute left-10 md:left-16 right-0 top-0 h-[160px] w-[calc(100%-2.5rem)] md:w-[calc(100%-4rem)]"/>
 
-            <div className="absolute left-16 right-0 bottom-0 flex justify-between text-zinc-400 text-sm">
+            <div className="absolute left-10 md:left-16 right-0 bottom-0 flex justify-between text-zinc-400 text-[10px] md:text-sm">
                 {data.map((item) => (
                     <span key={item.label}>{item.label}</span>
                 ))}

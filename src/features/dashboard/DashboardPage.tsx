@@ -10,22 +10,22 @@ import QuickAdd from "./components/QuickAdd";
 
 export default function DashboardPage() {
     return (
-        <main className="min-h-screen w-full overflow-x-hidden px-8 py-5 text-white font-[Orbitron]">
-            <Header title="Dashboard" />
+        <main className="min-h-screen w-full overflow-x-hidden px-4 py-[9px] md:px-5 xl:px-6 text-white font-[Orbitron]">
+            <Header title="Dashboard"/>
 
-            <StatsGrid />
+            <StatsGrid/>
 
-            <section className="grid grid-cols-3 gap-5 mb-2">
-                <ActivityOverview />
-                <TaskCompletion />
+            <section className="grid grid-cols-1 xl:grid-cols-3 gap-3 mb-3">
+                <ActivityOverview/>
+                <TaskCompletion/>
             </section>
 
-            <TaskSummaryCards />
+            <TaskSummaryCards/>
 
-            <section className="grid grid-cols-3 gap-5">
-                <TodayTasks />
-                <UpcomingList />
-                <QuickAdd />
+            <section className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+                <TodayTasks/>
+                <UpcomingList/>
+                <QuickAdd/>
             </section>
         </main>
     );

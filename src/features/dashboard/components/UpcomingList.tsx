@@ -5,8 +5,8 @@ import ArrowIcon from "../../../components/icons/arrow.svg?react";
 
 export default function UpcomingList() {
     return (
-        <Card className="h-[300px] p-8">
-            <h2 className="text-xl font-[Orbitron] mb-5">
+        <Card className="min-h-[260px] p-4 md:p-5 xl:p-6">
+            <h2 className="mb-5 text-xl leading-tight">
                 Upcoming
             </h2>
 
@@ -15,27 +15,24 @@ export default function UpcomingList() {
                     const Icon = item.icon;
 
                     return (
-                        <div
-                            key={item.title}
-                            className="h-14 flex items-center justify-between border-b border-cyan-400/5"
-                        >
-                            <div className="flex items-center gap-4">
-                                <div className="h-12 w-12 rounded-xl bg-cyan-400/10 flex items-center justify-center text-2xl">
-                                    <Icon className={`w-6 h-6 ${item.color}`} />
+                        <div key={item.title} className="flex min-h-14 items-center justify-between gap-3 border-b border-cyan-400/5 py-2">
+                            <div className="flex min-w-0 items-center gap-3 md:gap-4">
+                                <div className="flex h-10 w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-xl bg-cyan-400/10">
+                                    <Icon className={`h-5 w-5 md:h-6 md:w-6 ${item.color}`} />
                                 </div>
 
-                                <div>
-                                    <div className="text-zinc-100">
+                                <div className="min-w-0">
+                                    <div className="truncate text-sm md:text-base text-zinc-100">
                                         {item.title}
                                     </div>
 
-                                    <div className="text-sm text-zinc-400">
+                                    <div className="truncate text-xs md:text-sm text-zinc-400">
                                         {item.date}
                                     </div>
                                 </div>
                             </div>
 
-                            <span className="px-4 py-1 rounded-xl bg-fuchsia-500/10 text-fuchsia-300 text-sm">
+                            <span className="shrink-0 rounded-xl bg-fuchsia-500/10 px-3 py-1 text-xs md:px-4 md:text-sm text-fuchsia-300">
                                 {item.tag}
                             </span>
                         </div>
@@ -43,9 +40,9 @@ export default function UpcomingList() {
                 })}
             </div>
 
-            <button className="mx-auto mt-3 flex items-center gap-3 text-cyan-300 hover:text-cyan-200 transition">
+            <button className="mx-auto mt-4 flex cursor-pointer items-center gap-3 text-sm md:text-base text-cyan-300 hover:text-cyan-200 transition">
                 View Calendar
-                <ArrowIcon className="w-6 h-6 rotate-180" />
+                <ArrowIcon className="h-5 w-5 md:h-6 md:w-6 rotate-180" />
             </button>
         </Card>
     );
