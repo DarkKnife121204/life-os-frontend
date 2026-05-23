@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -40,6 +40,12 @@ import ProfileIcon from "../components/icons/profile.svg?react";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import MarkIcon from "../components/icons/mark.svg?react";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import TaskIcon from "../components/icons/tasks.svg?react";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import CloudIcon from "../components/icons/cloud.svg?react";
 
 const stats = [
     { icon: CheckIcon, value: "12", label: "Tasks Today", color: "text-cyan-300" },
@@ -58,9 +64,9 @@ const todayTasks = [
 ];
 
 const upcoming = [
-    { icon: "▣", title: "Product Review", date: "15 May, 14:00", tag: "Meeting", color: "text-fuchsia-400" },
-    { icon: "▣", title: "Design Meeting", date: "16 May, 11:00", tag: "Meeting", color: "text-cyan-400" },
-    { icon: "✦", title: "Deploy v2.1", date: "20 May, 09:00", tag: "Important", color: "text-cyan-300" },
+    { icon: TaskIcon, title: "Product Review", date: "15 May, 14:00", tag: "Meeting", color: "text-fuchsia-400" },
+    { icon: TaskIcon, title: "Design Meeting", date: "16 May, 11:00", tag: "Meeting", color: "text-cyan-400" },
+    { icon: TaskIcon, title: "Deploy v2.1", date: "20 May, 09:00", tag: "Important", color: "text-cyan-300" },
 ];
 
 const activityData = [
@@ -172,14 +178,20 @@ function SmallChart({title, value, percent, color, negative = false,}: {title: s
     );
 }
 
-function QuickButton({icon, label, purple = false}: { icon: string; label: string; purple?: boolean; }) {
+type QuickButtonProps = {
+    icon: React.ElementType;
+    label: string;
+    purple?: boolean;
+};
+
+function QuickButton({ icon: Icon, label, purple = false }: QuickButtonProps) {
     return (
-        <button
-            className="h-32 rounded-xl border border-cyan-400/10 bg-slate-950/30 flex flex-col items-center justify-center gap-4 hover:border-cyan-400/40 transition">
-            <span className={`text-5xl ${purple ? "text-fuchsia-400" : "text-cyan-300"}`}>
-                {icon}
+        <button className="h-32 rounded-xl border border-cyan-400/10 bg-slate-950/30 flex flex-col items-center justify-center gap-4 hover:border-cyan-400/40 transition">
+            <Icon className={`w-10 h-10 ${purple ? "text-fuchsia-400" : "text-cyan-300"}`} />
+
+            <span className="text-sm text-zinc-200 whitespace-nowrap">
+                {label}
             </span>
-            <span className="text-sm text-zinc-200 whitespace-nowrap">{label}</span>
         </button>
     );
 }
@@ -476,15 +488,11 @@ export default function Dashboard() {
 
                     <div className="space-y-1">
                         {todayTasks.map((task) => (
-                            <div key={task.title}
-                                 className="h-11 flex items-center justify-between border-b border-cyan-400/5">
-                                <div className="flex items-center gap-4">
+                            <div key={task.title} className="h-10 flex items-center justify-between border-b border-cyan-400/5">
+                                <div className="flex items-center gap-2">
                                     <span className={`h-6 w-6 rounded-full border flex items-center justify-center text-xs
-                                            ${task.done
-                                        ? "bg-cyan-400 border-cyan-400 text-slate-950"
-                                        : "border-slate-500 text-transparent"
-                                    }`}>
-                                        ✓
+                                        ${task.done ? "bg-cyan-400 border-cyan-400 text-slate-950" : "border-slate-500 text-transparent"}`}>
+                                        <MarkIcon className="w-4 h-4"/>
                                     </span>
 
                                     <span className="text-zinc-200">{task.title}</span>
@@ -495,7 +503,7 @@ export default function Dashboard() {
                         ))}
                     </div>
 
-                    <button className="mx-auto flex items-center gap-3 text-cyan-300 hover:text-cyan-200 transition">
+                    <button className="mx-auto mt-3 flex items-center gap-3 text-cyan-300 hover:text-cyan-200 transition">
                         View All Tasks <ArrowIcon className="w-6 h-6 transform rotate-180"></ArrowIcon>
                     </button>
                 </Card>
@@ -503,14 +511,12 @@ export default function Dashboard() {
                 <Card className="h-[300px] p-8">
                     <h2 className="text-xl font-[Orbitron] mb-5">Upcoming</h2>
 
-                    <div className="space-y-3">
+                    <div className="space-y-1">
                         {upcoming.map((item) => (
-                            <div key={item.title}
-                                 className="h-16 flex items-center justify-between border-b border-cyan-400/5">
+                            <div key={item.title} className="h-14 flex items-center justify-between border-b border-cyan-400/5">
                                 <div className="flex items-center gap-4">
-                                    <div
-                                        className="h-12 w-12 rounded-xl bg-cyan-400/10 flex items-center justify-center text-2xl">
-                                        <span className={item.color}>{item.icon}</span>
+                                    <div className="h-12 w-12 rounded-xl bg-cyan-400/10 flex items-center justify-center text-2xl">
+                                        <item.icon className={`w-6 h-6 ${item.color}`}></item.icon>
                                     </div>
 
                                     <div>
@@ -526,24 +532,22 @@ export default function Dashboard() {
                         ))}
                     </div>
 
-                    <button className="mx-auto flex items-center gap-3 text-cyan-300 hover:text-cyan-200 transition">
+                    <button className="mx-auto mt-3 flex items-center gap-3 text-cyan-300 hover:text-cyan-200 transition">
                         View Calendar <ArrowIcon className="w-6 h-6 transform rotate-180"></ArrowIcon>
                     </button>
                 </Card>
 
                 <Card className="h-[300px] p-8">
-                    <h2 className="text-xl font-[Orbitron] mb-7">Quick Add</h2>
+                    <h2 className="text-xl font-[Orbitron] mb-4">Quick Add</h2>
 
                     <div className="grid grid-cols-4 gap-5">
-                        <QuickButton icon="☑" label="New Task"/>
-                        <QuickButton icon="▣" label="New Event" purple/>
-                        <QuickButton icon="▤" label="New Note"/>
-                        <QuickButton icon="☁" label="Upload"/>
+                        <QuickButton icon={CheckIcon} label="New Task"/>
+                        <QuickButton icon={TaskIcon} label="New Event" purple/>
+                        <QuickButton icon={NoteIcon} label="New Note"/>
+                        <QuickButton icon={CloudIcon} label="Upload"/>
                     </div>
 
-                    <button
-                        className="h-14 w-full rounded-xl bg-cyan-400 text-slate-950 font-[Orbitron] flex items-center justify-center gap-4 hover:bg-cyan-300 transition">
-                        <span className="text-2xl">＋</span>
+                    <button className="h-14 mt-2 w-full rounded-xl bg-cyan-400 text-slate-950 font-[Orbitron] flex items-center justify-center gap-4 hover:bg-cyan-300 transition">
                         Quick Add
                     </button>
                 </Card>
