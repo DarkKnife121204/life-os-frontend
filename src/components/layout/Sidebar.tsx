@@ -1,33 +1,15 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import DashboardIcon from "./icons/dashboard.svg?react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import TaskIcon from "./icons/task.svg?react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import NotesIcon from "./icons/note.svg?react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import AnalyticsIcon from "./icons/analytics.svg?react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import CalendarIcon from "./icons/calendar.svg?react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import SettingIcon from "./icons/settings.svg?react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import HobbyIcon from "./icons/hobby.svg?react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import HealthIcon from "./icons/health.svg?react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import WalletIcon from "./icons/wallet.svg?react";
+import DashboardIcon from "../icons/dashboard.svg?react";
+import TaskIcon from "../icons/task.svg?react";
+import NotesIcon from "../icons/note.svg?react";
+import AnalyticsIcon from "../icons/analytics.svg?react";
+import CalendarIcon from "../icons/calendar.svg?react";
+import SettingIcon from "../icons/settings.svg?react";
+import HobbyIcon from "../icons/hobby.svg?react";
+import HealthIcon from "../icons/health.svg?react";
+import WalletIcon from "../icons/wallet.svg?react";
 
 const menu = [
     { path: "/dashboard", label: "Dashboard", Icon: DashboardIcon },
@@ -98,9 +80,9 @@ export default function Sidebar() {
                 <div className="mt-auto mb-3 h-px w-full bg-cyan-400/10 shadow-[0_0_12px_rgba(0,255,255,0.12)]"/>
                 <div className={`h-14 rounded-xl flex items-center
                     ${isOpen
-                        ? "border border-cyan-400/10 bg-cyan-400/[0.03]"
-                        : "border border-transparent bg-transparent"
-                    }`}
+                    ? "border border-cyan-400/10 bg-cyan-400/[0.03]"
+                    : "border border-transparent bg-transparent"
+                }`}
                 >
                     <div className="w-14 h-16 flex items-center justify-center">
                         <div className="h-11 w-11 rounded-full border border-cyan-400/60 flex items-center justify-center text-cyan-300 text-xl shadow-[0_0_14px_rgba(0,255,255,0.18)]">

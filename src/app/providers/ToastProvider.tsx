@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import Toast from "../../components/Toast.tsx";
+import Toast from "../../components/ui/Toast.tsx";
 
 type ToastType = {
     id: number;
