@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { removeToken } from "../../lib/token.ts";
 
 import NotificationIcon from "../icons/notification.svg?react";
 import SettingIcon from "../icons/settings.svg?react";
@@ -7,6 +8,11 @@ import ProfileIcon from "../icons/profile.svg?react";
 
 export default function ProfileMenu() {
     const navigate = useNavigate();
+
+    const handleLogout = () => {
+        removeToken();
+        navigate("/");
+    };
 
     return (
         <div className="absolute right-0 top-14 z-50 w-[calc(100vw-2rem)] max-w-[320px] rounded-xl border border-purple-500/70 bg-[#020b12]/95 backdrop-blur-xl
@@ -59,10 +65,7 @@ export default function ProfileMenu() {
             <div className="my-4 h-px bg-cyan-400/20"/>
 
             <button
-                onClick={() => {
-                    // потом тут удалим token
-                    navigate("/");
-                }}
+                onClick={handleLogout}
                 className="flex items-center gap-4 h-12 w-full px-4 rounded-lg text-pink-500 hover:bg-pink-500/10 transition cursor-pointer"
             >
                 <LogoutIcon className="w-5 h-5"/>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getToken } from "../lib/token.ts";
+import { getToken, removeToken } from "../lib/token.ts";
 
 const api = axios.create({
     baseURL: "http://localhost:8080/api",
@@ -18,5 +18,20 @@ api.interceptors.request.use((config) => {
 
     return config;
 });
+
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (
+            error.response?.status === 401 &&
+            window.location.pathname !== "/"
+        ) {
+            removeToken();
+            window.location.href = "/";
+        }
+
+        return Promise.reject(error);
+    }
+);
 
 export default api;
