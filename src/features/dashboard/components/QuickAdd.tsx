@@ -21,7 +21,8 @@ export default function QuickAdd() {
                 <QuickButton icon={CloudIcon} label="Upload" />
             </div>
 
-            <button className="mt-4 flex h-12 md:h-14 w-full cursor-pointer items-center justify-center gap-4 rounded-xl bg-cyan-400 text-sm md:text-base text-slate-950 hover:bg-cyan-300 transition">
+            <button className="mt-4 flex h-12 md:h-14 w-full cursor-pointer items-center justify-center gap-4 rounded-xl bg-cyan-400 text-sm md:text-base text-slate-950
+                hover:bg-cyan-300 hover:shadow-[0_0_18px_rgba(0,255,255,0.35)] transition">
                 Quick Add
             </button>
         </Card>

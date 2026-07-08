@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+    <path
+            d="M36 36L50 50M50 50L64 64M50 50L36 64M50 50L64 36
+           M50 91.668C27.023 91.668 8.332 72.977 8.332 50
+           C8.332 27.023 27.023 8.332 50 8.332
+           C72.977 8.332 91.668 27.023 91.668 50
+           C91.668 72.977 72.977 91.668 50 91.668Z"
+            stroke="currentColor"
+            stroke-width="8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+    />
+</svg>

@@ -5,7 +5,6 @@ import ActivityChart from "./ActivityChart";
 import { activityData } from "../data/dashboard.mock";
 
 import PrevIcon from "../../../components/icons/prev.svg?react";
-import MarkIcon from "../../../components/icons/mark.svg?react";
 
 const periods = [
     "This Week",
@@ -39,7 +38,7 @@ export default function ActivityOverview() {
                     </button>
 
                     {isPeriodOpen && (
-                        <div className="absolute right-0 top-12 z-50 w-full sm:w-44 rounded-xl border border-cyan-400/30 bg-[#06121a]/95
+                        <div className="absolute right-0 top-12 z-50 w-full sm:w-40 rounded-xl border border-cyan-400/30 bg-[#06121a]/95
                                 p-2 space-y-1 shadow-[0_0_24px_rgba(0,255,255,0.16)] backdrop-blur-xl">
                             {periods.map((item) => (
                                 <button key={item} onClick={() => {
@@ -52,10 +51,6 @@ export default function ActivityOverview() {
                                             : "text-zinc-300 hover:bg-cyan-400/5 hover:text-cyan-300"
                                     }`}>
                                     <span>{item}</span>
-
-                                    {period === item && (
-                                        <MarkIcon className="h-5 w-5"/>
-                                    )}
                                 </button>
                             ))}
                         </div>
