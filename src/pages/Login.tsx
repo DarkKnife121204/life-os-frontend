@@ -26,6 +26,7 @@ export default function Login() {
 
         if (!res.success) {
             showToast({
+                title: "Login Error",
                 message: res.message || "Login error",
                 status: res.status,
             });

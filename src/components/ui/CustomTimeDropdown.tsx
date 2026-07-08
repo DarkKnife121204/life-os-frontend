@@ -3,7 +3,7 @@ import type {CustomTimeDropdownProps} from "../types/types.ts";
 import PrevIcon from "../../components/icons/prev.svg?react";
 import ClockIcon from "../../components/icons/clock.svg?react";
 
-export default function CustomTimeDropdown({ value, onChange }: CustomTimeDropdownProps) {
+export default function CustomTimeDropdown({ value, onChange, isInvalid}: CustomTimeDropdownProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedHour = "00", selectedMinute = "00"] = value.split(":");
     const hours = Array.from({ length: 24 }, (_, index) =>
@@ -24,10 +24,10 @@ export default function CustomTimeDropdown({ value, onChange }: CustomTimeDropdo
         <div className="relative">
             <button type="button" onClick={() => setIsOpen((prev) => !prev)}
                 className={`flex w-full cursor-pointer items-center gap-4 rounded-xl border bg-[#030D14] px-3 py-3 text-left outline-none transition
-                    ${isOpen
-                        ? "border-cyan-400/60 text-cyan-300 shadow-[0_0_16px_rgba(0,255,255,0.14)]"
+                ${isOpen ? "border-cyan-400/60 text-cyan-300 shadow-[0_0_16px_rgba(0,255,255,0.14)]"
+                    : isInvalid ? "border-red-500 shadow-[0_0_16px_rgba(239,68,68,0.25)]"
                         : "border-cyan-500/30 text-zinc-300 hover:border-cyan-400/60 hover:text-cyan-300 hover:shadow-[0_0_16px_rgba(0,255,255,0.14)]"
-            }`}>
+                }`}>
                 <ClockIcon className="h-6 w-6 shrink-0 text-cyan-300" />
                 <span className="flex-1 font-semibold">
                     {value}

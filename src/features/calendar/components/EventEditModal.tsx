@@ -1,6 +1,7 @@
 import type { EventEditModalProps } from "../types/calendar.types.ts";
 import { useCalendarDropdownOptions } from "../hooks/useCalendarDropdownOptions.ts";
 import { useEventEditForm } from "../hooks/useEventEditForm.ts";
+import { useEventFormValidation } from "../hooks/useEventFormValidation.ts";
 import { useUpdateCalendarEvent } from "../hooks/useUpdateCalendarEvent.ts";
 import CustomDropdown from "../../../components/ui/CustomDropdown";
 import CustomTimeDropdown from "../../../components/ui/CustomTimeDropdown.tsx";
@@ -13,9 +14,10 @@ export default function EventEditModal({ event, onClose, onEventUpdated }: Event
         setStartTime, endTime, setEndTime, date, setDate, color, setColor} = useEventEditForm(event);
     const { options } = useCalendarDropdownOptions(Boolean(event));
     const { isSaving, updateEvent } = useUpdateCalendarEvent({onEventUpdated, onClose,});
+    const { errors, validate } = useEventFormValidation({title, description, location, eventType, priority, status, date, startTime, endTime, color});
 
     async function handleSubmit() {
-        if (!event) return;
+        if (!event || !validate()) return;
 
         await updateEvent(event.id, {
             title,
@@ -27,7 +29,7 @@ export default function EventEditModal({ event, onClose, onEventUpdated }: Event
             start_at: startTime,
             end_at: endTime,
             location,
-            color
+            color,
         });
     }
 
@@ -50,19 +52,22 @@ export default function EventEditModal({ event, onClose, onEventUpdated }: Event
                             Event Title <span className="text-pink-400">*</span>
                         </label>
                         <input value={title} onChange={(event) => setTitle(event.target.value)}
-                            className="w-full rounded-xl border border-cyan-500/30 px-3 py-3 text-white outline-none
-                                transition placeholder:text-zinc-500 focus:border-cyan-400/60 focus:shadow-[0_0_16px_rgba(0,255,255,0.14)] focus:text-cyan-300
-                                hover:border-cyan-400/60 hover:text-cyan-300 hover:shadow-[0_0_16px_rgba(0,255,255,0.14)]"/>
+                            className={`w-full rounded-xl border px-3 py-3 text-white outline-none transition placeholder:text-zinc-500 focus:text-cyan-300
+                                ${errors.title ? "border-red-500 shadow-[0_0_16px_rgba(239,68,68,0.25)]"
+                                    : "border-cyan-500/30 focus:border-cyan-400/60 focus:shadow-[0_0_16px_rgba(0,255,255,0.14)] hover:border-cyan-400/60 " +
+                                    "hover:shadow-[0_0_16px_rgba(0,255,255,0.14)]"
+                               }`}/>
                     </div>
                     <div>
                         <label className="mb-1 block text-sm text-zinc-100">
                             Description
                         </label>
                         <textarea value={description} rows={4} onChange={(event) => setDescription(event.target.value)}
-                            className="w-full resize-none rounded-xl border border-cyan-500/30 px-3 py-3
-                                text-white outline-none transition placeholder:text-zinc-500
-                                focus:border-cyan-400/60 focus:shadow-[0_0_16px_rgba(0,255,255,0.14)] focus:text-cyan-300
-                                hover:border-cyan-400/60 hover:text-cyan-300 hover:shadow-[0_0_16px_rgba(0,255,255,0.14)]"/>
+                            className={`w-full resize-none rounded-xl border px-3 py-3 text-white outline-none transition placeholder:text-zinc-500 focus:text-cyan-300
+                                ${errors.description ? "border-red-500 shadow-[0_0_16px_rgba(239,68,68,0.25)]"
+                                    : "border-cyan-500/30 focus:border-cyan-400/60 focus:shadow-[0_0_16px_rgba(0,255,255,0.14)] hover:border-cyan-400/60 hover:text-cyan-300 " +
+                                    "hover:shadow-[0_0_16px_rgba(0,255,255,0.14)]"
+                                }`}/>
                     </div>
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                         <div>
@@ -122,11 +127,14 @@ export default function EventEditModal({ event, onClose, onEventUpdated }: Event
                         <label className="mb-1 block text-sm font-semibold text-zinc-100">
                             Location
                         </label>
-                        <div className="flex items-center gap-4 rounded-xl border border-cyan-500/30 bg-[#030D14] px-3 py-3 transition
-                                hover:border-cyan-400/60 hover:shadow-[0_0_16px_rgba(0,255,255,0.14)]
-                                focus-within:border-cyan-400/60 focus-within:shadow-[0_0_16px_rgba(0,255,255,0.14)]">
+                        <div className={`flex items-center gap-4 rounded-xl border bg-[#030D14] px-3 py-3 transition
+                            ${errors.location? "border-red-500 shadow-[0_0_16px_rgba(239,68,68,0.25)]"
+                                : "border-cyan-500/30 hover:border-cyan-400/60 hover:shadow-[0_0_16px_rgba(0,255,255,0.14)] focus-within:border-cyan-400/60 " +
+                                "focus-within:shadow-[0_0_16px_rgba(0,255,255,0.14)]"
+                        }`}>
                             <LocationIcon className="h-6 w-6 text-cyan-300"/>
-                            <input value={location} placeholder="Location" onChange={(event) => setLocation(event.target.value)}
+                            <input value={location} placeholder="Location"
+                                   onChange={(event) => setLocation(event.target.value)}
                                    className="w-full bg-transparent text-white outline-none placeholder:text-zinc-500 focus:text-cyan-300 hover:text-cyan-300"
                             />
                         </div>

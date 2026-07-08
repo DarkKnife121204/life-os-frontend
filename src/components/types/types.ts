@@ -9,16 +9,19 @@ export type CustomDropdownProps = {
     value: string;
     options: DropdownOption[];
     onChange: (value: string) => void;
+    isInvalid?: boolean;
 };
 
 export type CustomTimeDropdownProps = {
     value: string;
     onChange: (value: string) => void;
+    isInvalid?: boolean;
 };
 
 export type CustomDateDropdownProps = {
     value: string;
     onChange: (value: string) => void;
+    isInvalid?: boolean;
 };
 
 export type CheckboxGroupOption = {

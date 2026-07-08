@@ -2,7 +2,7 @@ import {useState} from "react";
 import type {CustomDropdownProps} from "../types/types.ts";
 import PrevIcon from "../../components/icons/prev.svg?react";
 
-export default function CustomDropdown({ value, options, onChange }: CustomDropdownProps) {
+export default function CustomDropdown({ value, options, onChange, isInvalid = false}: CustomDropdownProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     const selectedOption = options.find((option) => option.value === value);
@@ -10,9 +10,9 @@ export default function CustomDropdown({ value, options, onChange }: CustomDropd
     return (
         <div className="relative w-full sm:w-auto">
             <button type="button" onClick={() => setIsOpen((prev) => !prev)}
-                    className={`w-full cursor-pointer rounded-xl border px-3 py-3 pr-11 text-left outline-none transition
-                    ${isOpen
-                        ? "border-cyan-400/60 text-cyan-300 shadow-[0_0_16px_rgba(0,255,255,0.14)]"
+                className={`w-full h-[50px] cursor-pointer rounded-xl border px-3 py-3 pr-11 text-left outline-none transition
+                ${isInvalid ? "border-red-500 shadow-[0_0_16px_rgba(239,68,68,0.25)]"
+                    : isOpen ? "border-cyan-400/60 text-cyan-300 shadow-[0_0_16px_rgba(0,255,255,0.14)]"
                         : "border-cyan-500/30 text-zinc-300 hover:border-cyan-400/60 hover:text-cyan-300 hover:shadow-[0_0_16px_rgba(0,255,255,0.14)]"
                     }`}>
                 {selectedOption?.label ?? value}

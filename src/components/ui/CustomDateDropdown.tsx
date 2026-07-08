@@ -5,7 +5,7 @@ import {getCalendarDays, getDateFromValue, getNextMonth, getPrevMonth, isSameDat
 import PrevIcon from "../../components/icons/prev.svg?react";
 import CalendarIcon from "../../components/icons/calendar.svg?react";
 
-export default function CustomDateDropdown({ value, onChange }: CustomDateDropdownProps) {
+export default function CustomDateDropdown({ value, onChange, isInvalid}: CustomDateDropdownProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [currentDate, setCurrentDate] = useState(getDateFromValue(value));
 
@@ -31,10 +31,10 @@ export default function CustomDateDropdown({ value, onChange }: CustomDateDropdo
         <div className="relative z-50">
             <button type="button" onClick={() => setIsOpen((prev) => !prev)}
                 className={`flex w-full cursor-pointer items-center gap-4 rounded-xl border bg-[#030D14] px-3 py-3 text-left outline-none transition
-                    ${isOpen
-                        ? "border-cyan-400/60 text-cyan-300 shadow-[0_0_16px_rgba(0,255,255,0.14)]"
+                ${isInvalid ? "border-red-500 shadow-[0_0_16px_rgba(239,68,68,0.25)]"
+                    : isOpen ? "border-cyan-400/60 text-cyan-300 shadow-[0_0_16px_rgba(0,255,255,0.14)]"
                         : "border-cyan-500/30 text-zinc-300 hover:border-cyan-400/60 hover:text-cyan-300 hover:shadow-[0_0_16px_rgba(0,255,255,0.14)]"
-            }`}>
+                }`}>
                 <CalendarIcon className="h-6 w-6 shrink-0 text-cyan-300" />
                 <span className="flex-1 text-sm">
                     {value}

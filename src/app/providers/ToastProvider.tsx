@@ -3,6 +3,7 @@ import Toast from "../../components/ui/Toast.tsx";
 
 type ToastType = {
     id: number;
+    title: string;
     message: string;
     status?: number;
 };
@@ -42,6 +43,7 @@ export default function ToastProvider({ children }: { children: React.ReactNode 
                 {toasts.map((toast) => (
                     <Toast
                         key={toast.id}
+                        title={toast.title}
                         message={toast.message}
                         status={toast.status}
                         onClose={() => removeToast(toast.id)}

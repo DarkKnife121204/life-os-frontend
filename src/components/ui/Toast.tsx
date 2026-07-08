@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
 type ToastProps = {
+    title: string;
     message: string;
     status?: number;
     onClose?: () => void;
 };
 
-export default function Toast({ message, status, onClose }: ToastProps) {
+export default function Toast({title, message, status, onClose }: ToastProps) {
     const [closing, setClosing] = useState(false);
 
     useEffect(() => {
@@ -31,7 +32,7 @@ export default function Toast({ message, status, onClose }: ToastProps) {
                 <div className="flex-1">
                     <div className="mb-1 flex items-center justify-between gap-3">
                         <h3 className="text-sm font-bold tracking-wider text-red-400">
-                            Login error
+                            {title}
                         </h3>
 
                         {status && (
