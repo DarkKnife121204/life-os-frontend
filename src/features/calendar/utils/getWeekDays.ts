@@ -1,6 +1,6 @@
 import { FULL_CALENDAR_VIEWS } from "../constants/calendar.constants";
 import type {CalendarWeekDay} from "../types/calendar.types.ts";
-import { formatDate } from "../../../components/utils/date";
+import { formatDate } from "@/components/utils/date";
 
 
 export function getWeekDays(selectedDate: Date): CalendarWeekDay[] {

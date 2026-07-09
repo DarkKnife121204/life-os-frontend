@@ -1,4 +1,4 @@
-import { formatDate } from "../../../components/utils/date";
+import { formatDate } from "@/components/utils/date";
 import type {CalendarDay} from  "../types/calendar.types.ts";
 
 export function getMonthDays(year: number, month: number): CalendarDay[] {

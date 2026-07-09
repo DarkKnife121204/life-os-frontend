@@ -1,11 +1,11 @@
 import QuickButton from "./QuickButton";
 
-import CheckIcon from "../../../components/icons/check.svg?react";
-import TaskIcon from "../../../components/icons/tasks.svg?react";
-import NoteIcon from "../../../components/icons/note.svg?react";
-import CloudIcon from "../../../components/icons/cloud.svg?react";
+import CheckIcon from "@/components/icons/check.svg?react";
+import TaskIcon from "@/components/icons/tasks.svg?react";
+import NoteIcon from "@/components/icons/note.svg?react";
+import CloudIcon from "@/components/icons/cloud.svg?react";
 
-import Card from "../../../components/ui/Card";
+import Card from "@/components/ui/Card";
 
 export default function QuickAdd() {
     return (

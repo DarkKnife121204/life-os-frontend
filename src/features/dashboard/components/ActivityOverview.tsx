@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import Card from "../../../components/ui/Card";
+import Card from "@/components/ui/Card";
 import ActivityChart from "./ActivityChart";
 import { activityData } from "../data/dashboard.mock";
 
-import PrevIcon from "../../../components/icons/prev.svg?react";
+import PrevIcon from "@/components/icons/prev.svg?react";
 
 const periods = [
     "This Week",

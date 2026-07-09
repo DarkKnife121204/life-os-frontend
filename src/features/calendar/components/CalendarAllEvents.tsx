@@ -1,6 +1,6 @@
-import PrevIcon from "../../../components/icons/prev.svg?react";
-import SearchIcon from "../../../components/icons/search.svg?react";
-import Card from "../../../components/ui/Card.tsx";
+import PrevIcon from "@/components/icons/prev.svg?react";
+import SearchIcon from "@/components/icons/search.svg?react";
+import Card from "@/components/ui/Card.tsx";
 import CalendarTableSortHeader from "./SortHeader";
 import {getPaginationPages} from "../utils/pagination";
 import {BG_COLOR_CLASSES, TEXT_COLOR_CLASSES, DOT_PRIORITY_CLASSES, STATUS_CLASSES, TEXT_PRIORITY_CLASSES, TABLE_HEADERS} from "../constants/calendar.constants.ts";

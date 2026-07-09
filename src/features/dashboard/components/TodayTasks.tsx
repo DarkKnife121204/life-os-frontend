@@ -1,8 +1,8 @@
-import Card from "../../../components/ui/Card";
+import Card from "@/components/ui/Card";
 import { todayTasks } from "../data/dashboard.mock";
 
-import MarkIcon from "../../../components/icons/mark.svg?react";
-import ArrowIcon from "../../../components/icons/arrow.svg?react";
+import MarkIcon from "@/components/icons/mark.svg?react";
+import ArrowIcon from "@/components/icons/arrow.svg?react";
 
 export default function TodayTasks() {
     return (

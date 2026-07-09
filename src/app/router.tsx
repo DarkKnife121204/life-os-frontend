@@ -14,6 +14,7 @@ import Habit from "../pages/Habit";
 import Health from "../pages/Health";
 import Finance from "../pages/Finance";
 import CalendarPage from "../pages/calendar/CalendarPage.tsx";
+import AuthGuard from "./AuthGuard.tsx";
 
 function RootLayout() {
     return (
@@ -32,17 +33,22 @@ export const router = createBrowserRouter([
                 element: <Login />,
             },
             {
-                element: <Layout />,
+                element: <AuthGuard />,
                 children: [
-                    { path: "/dashboard", element: <Dashboard /> },
-                    { path: "/tasks", element: <Task /> },
-                    { path: "/notes", element: <Note /> },
-                    { path: "/analytics", element: <Analytics /> },
-                    { path: "/settings", element: <Settings /> },
-                    { path: "/habits", element: <Habit /> },
-                    { path: "/health", element: <Health /> },
-                    { path: "/finance", element: <Finance /> },
-                    { path: "/calendar", element: <CalendarPage /> },
+                    {
+                        element: <Layout />,
+                        children: [
+                            { path: "/dashboard", element: <Dashboard /> },
+                            { path: "/tasks", element: <Task /> },
+                            { path: "/notes", element: <Note /> },
+                            { path: "/analytics", element: <Analytics /> },
+                            { path: "/settings", element: <Settings /> },
+                            { path: "/habits", element: <Habit /> },
+                            { path: "/health", element: <Health /> },
+                            { path: "/finance", element: <Finance /> },
+                            { path: "/calendar", element: <CalendarPage /> },
+                        ],
+                    },
                 ],
             },
         ],

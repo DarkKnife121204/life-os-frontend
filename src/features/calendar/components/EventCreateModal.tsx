@@ -1,17 +1,17 @@
 import { useCalendarDropdownOptions } from "../hooks/useCalendarDropdownOptions.ts";
 import { useCreateCalendarEvent } from "../hooks/useCreateCalendarEvent.ts";
-import CustomDropdown from "../../../components/ui/CustomDropdown";
-import CustomTimeDropdown from "../../../components/ui/CustomTimeDropdown.tsx";
-import CustomDateDropdown from "../../../components/ui/CustomDateDropdown.tsx";
-import Modal from "../../../components/ui/Modal.tsx";
-import ModalCloseButton from "../../../components/ui/ModalCloseButton.tsx";
-import Button from "../../../components/ui/Button";
-import Input from "../../../components/ui/Input.tsx";
-import Textarea from "../../../components/ui/Textarea.tsx";
-import FormField from "../../../components/ui/FormField.tsx";
+import CustomDropdown from "@/components/ui/CustomDropdown";
+import CustomTimeDropdown from "@/components/ui/CustomTimeDropdown.tsx";
+import CustomDateDropdown from "@/components/ui/CustomDateDropdown.tsx";
+import Modal from "@/components/ui/Modal.tsx";
+import ModalCloseButton from "@/components/ui/ModalCloseButton.tsx";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input.tsx";
+import Textarea from "@/components/ui/Textarea.tsx";
+import FormField from "@/components/ui/FormField.tsx";
 import { useEventCreateForm } from "../hooks/useCalendarCreate.ts";
 import { useEventFormValidation } from "../hooks/useEventFormValidation.ts";
-import LocationIcon from "../../../components/icons/location.svg?react";
+import LocationIcon from "@/components/icons/location.svg?react";
 import type {CalendarEvent} from "../types/calendar.types.ts";
 
 type EventCreateModalProps = {

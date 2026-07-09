@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import { removeToken } from "../../lib/token.ts";
-
+import { removeToken } from "@/lib/token.ts";
+import { useUserStore } from "@/store/userStore.ts";
 import NotificationIcon from "../icons/notification.svg?react";
 import SettingIcon from "../icons/settings.svg?react";
 import LogoutIcon from "../icons/logout.svg?react";
@@ -8,9 +8,13 @@ import ProfileIcon from "../icons/profile.svg?react";
 
 export default function ProfileMenu() {
     const navigate = useNavigate();
+    const user = useUserStore((state) => state.user);
+    const clearUser = useUserStore((state) => state.clearUser);
+    const initial = user?.name.charAt(0).toUpperCase();
 
     const handleLogout = () => {
         removeToken();
+        clearUser();
         navigate("/");
     };
 
@@ -20,16 +24,16 @@ export default function ProfileMenu() {
             <div className="flex items-center gap-4 mb-5">
                 <div className="h-10 w-10 shrink-0 rounded-full border border-cyan-400 flex items-center justify-center text-cyan-300 text-xl
                     shadow-[0_0_20px_rgba(0,255,255,0.25)]">
-                    D
+                    {initial}
                 </div>
 
                 <div className="min-w-0">
                     <p className="text-xl font-[Orbitron] text-white">
-                        DarkKnife
+                        {user?.name}
                     </p>
 
                     <p className="text-sm text-zinc-400 truncate">
-                        serserpar801014@gmail.com
+                        {user?.email}
                     </p>
                 </div>
             </div>

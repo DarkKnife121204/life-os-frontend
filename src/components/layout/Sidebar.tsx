@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import { useUserStore } from "@/store/userStore.ts";
 import DashboardIcon from "../icons/dashboard.svg?react";
 import TaskIcon from "../icons/task.svg?react";
 import NotesIcon from "../icons/note.svg?react";
@@ -35,6 +35,9 @@ export default function Sidebar() {
     const closeMobileSidebar = () => {
         setIsMobileOpen(false);
     };
+
+    const user = useUserStore((state) => state.user);
+    const initial = user?.name.charAt(0).toUpperCase();
 
     return (
         <>
@@ -106,15 +109,15 @@ export default function Sidebar() {
                         <div className="w-14 h-16 flex items-center justify-center">
                             <div
                                 className="h-11 w-11 rounded-full border border-cyan-400/60 flex items-center justify-center text-cyan-300 text-xl shadow-[0_0_14px_rgba(0,255,255,0.18)]">
-                                D
+                                {initial}
                             </div>
                         </div>
 
                         <div
                             className={`min-w-0 overflow-hidden transition-all duration-400 ${isOpen ? "opacity-100 max-w-[150px] translate-x-0" : "opacity-0 max-w-0 -translate-x-2"}`}>
-                            <p className="truncate text-sm text-white">DarkKnife</p>
+                            <p className="truncate text-sm text-white">{user?.name}</p>
                             <p className="truncate text-[10px] text-zinc-400">
-                                serserpar801014@gmail.com
+                                {user?.email}
                             </p>
                         </div>
                     </div>

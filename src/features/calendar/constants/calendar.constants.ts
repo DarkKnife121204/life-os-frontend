@@ -1,11 +1,11 @@
-import CalendarIcon from "../../../components/icons/calendar.svg?react"
-import ProfileIcon from "../../../components/icons/profile.svg?react"
-import TaskIcon from "../../../components/icons/tasks.svg?react"
-import ClockIcon from "../../../components/icons/clock.svg?react"
-import DeadIcon from "../../../components/icons/dead.svg?react"
-import CompleteIcon from "../../../components/icons/complete.svg?react"
-import UpcomingIcon from "../../../components/icons/upcoming.svg?react"
-import ClosedIcon from "../../../components/icons/closed.svg?react"
+import CalendarIcon from "@/components/icons/calendar.svg?react"
+import ProfileIcon from "@/components/icons/profile.svg?react"
+import TaskIcon from "@/components/icons/tasks.svg?react"
+import ClockIcon from "@/components/icons/clock.svg?react"
+import DeadIcon from "@/components/icons/dead.svg?react"
+import CompleteIcon from "@/components/icons/complete.svg?react"
+import UpcomingIcon from "@/components/icons/upcoming.svg?react"
+import ClosedIcon from "@/components/icons/closed.svg?react"
 import type {CalendarView, SortField} from "../types/calendar.types";
 
 export const BG_COLOR_CLASSES = {

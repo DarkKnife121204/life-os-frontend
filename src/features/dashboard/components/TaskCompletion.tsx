@@ -1,4 +1,4 @@
-import Card from "../../../components/ui/Card";
+import Card from "@/components/ui/Card";
 import { taskStats } from "../data/dashboard.mock";
 import TaskCompletionLegend from "./TaskCompletionLegend";
 

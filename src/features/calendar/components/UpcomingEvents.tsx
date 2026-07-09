@@ -1,4 +1,4 @@
-import Card from "../../../components/ui/Card";
+import Card from "@/components/ui/Card";
 import {getUpcomingEvents} from "../utils/getUpcomingEvents";
 import {formatEventDate} from "../utils/formatEventDate";
 import {BG_COLOR_CLASSES, TEXT_COLOR_CLASSES, EVENT_TYPE_ICON} from "../constants/calendar.constants";

@@ -2,18 +2,18 @@ import {DOT_PRIORITY_CLASSES, STATUS_CLASSES} from "../constants/calendar.consta
 import type {CalendarEvent} from "../types/calendar.types.ts";
 import { useCalendarEvent } from "../hooks/useCalendarEvent.ts";
 import {ModalRow} from "./ModalRow.tsx";
-import Modal from "../../../components/ui/Modal.tsx";
-import ModalCloseButton from "../../../components/ui/ModalCloseButton.tsx";
-import Button from "../../../components/ui/Button.tsx";
-import CalendarIcon from "../../../components/icons/calendar.svg?react";
-import ClockIcon from "../../../components/icons/clock.svg?react";
-import LocationIcon from "../../../components/icons/location.svg?react";
-import StatusIcon from "../../../components/icons/status.svg?react";
-import DescriptionIcon from "../../../components/icons/description.svg?react";
-import EditIcon from "../../../components/icons/edit.svg?react";
-import DeleteIcon from "../../../components/icons/delete.svg?react";
-import RestoreIcon from "../../../components/icons/restore.svg?react";
-import CompleteIcon from "../../../components/icons/completed.svg?react";
+import Modal from "@/components/ui/Modal.tsx";
+import ModalCloseButton from "@/components/ui/ModalCloseButton.tsx";
+import Button from "@/components/ui/Button.tsx";
+import CalendarIcon from "@/components/icons/calendar.svg?react";
+import ClockIcon from "@/components/icons/clock.svg?react";
+import LocationIcon from "@/components/icons/location.svg?react";
+import StatusIcon from "@/components/icons/status.svg?react";
+import DescriptionIcon from "@/components/icons/description.svg?react";
+import EditIcon from "@/components/icons/edit.svg?react";
+import DeleteIcon from "@/components/icons/delete.svg?react";
+import RestoreIcon from "@/components/icons/restore.svg?react";
+import CompleteIcon from "@/components/icons/completed.svg?react";
 
 type EventShowModalProps = {
     eventId: number | null;

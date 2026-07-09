@@ -1,7 +1,7 @@
-import Card from "../../../components/ui/Card";
+import Card from "@/components/ui/Card";
 import { upcoming } from "../data/dashboard.mock";
 
-import ArrowIcon from "../../../components/icons/arrow.svg?react";
+import ArrowIcon from "@/components/icons/arrow.svg?react";
 
 export default function UpcomingList() {
     return (

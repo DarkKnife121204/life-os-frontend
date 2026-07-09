@@ -1,4 +1,4 @@
-import Card from "../../../components/ui/Card";
+import Card from "@/components/ui/Card";
 import CalendarCell from "./CalendarCell";
 import { getMonthDays } from "../utils/getMonthDays.ts";
 import { getEventsByDate } from "../utils/getEventsByDate";

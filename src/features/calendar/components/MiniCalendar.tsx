@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Card from "../../../components/ui/Card";
+import Card from "@/components/ui/Card";
 import {getMonthDays} from "../utils/getMonthDays.ts";
 import {getPrevMonth, getNextMonth} from "../utils/calendarNavigation";
-import {MINI_CALENDAR_VIEWS, MONTH_NAMES} from "../../../components/constants/constants.ts";
-import PrevIcon from "../../../components/icons/prev.svg?react";
+import {MINI_CALENDAR_VIEWS, MONTH_NAMES} from "@/components/constants/constants.ts";
+import PrevIcon from "@/components/icons/prev.svg?react";
 
 export default function MiniCalendar() {
     const [miniDate, setMiniDate] = useState(new Date());

@@ -1,5 +1,5 @@
 import type { CalendarEvent, CalendarView, DateRange } from "../types/calendar.types";
-import { formatDate } from "../../../components/utils/date";
+import { formatDate } from "@/components/utils/date";
 
 export function getCalendarRequestRange(view: CalendarView, selectedDate: Date): DateRange | null {
     if (view === "All Events") {

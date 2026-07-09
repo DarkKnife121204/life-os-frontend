@@ -1,7 +1,7 @@
-import PrevIcon from "../../../components/icons/prev.svg?react";
+import PrevIcon from "@/components/icons/prev.svg?react";
 import {getPrevDateByView, getNextDateByView} from "../utils/calendarNavigation";
 import {CALENDAR_VIEWS} from "../constants/calendar.constants";
-import {MONTH_NAMES} from "../../../components/constants/constants";
+import {MONTH_NAMES} from "@/components/constants/constants";
 import type {CalendarView} from "../types/calendar.types.ts";
 import type {Dispatch, SetStateAction} from "react";
 

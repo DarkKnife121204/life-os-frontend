@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {colorOptions, priorityOptions, statusOptions, typeOptions} from "../../../components/constants/constants";
+import {colorOptions, priorityOptions, statusOptions, typeOptions} from "@/components/constants/constants";
 
 export function useEventFilters() {
     const [search, setSearch] = useState("");

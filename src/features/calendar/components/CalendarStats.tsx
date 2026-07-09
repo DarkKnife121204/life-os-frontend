@@ -1,4 +1,4 @@
-import Card from "../../../components/ui/Card";
+import Card from "@/components/ui/Card";
 import {getCalendarStats} from "../utils/getCalendarStats";
 import {CALENDAR_STAT_COLORS, CALENDAR_STAT_ICONS} from "../constants/calendar.constants";
 import type {CalendarEvent} from "../types/calendar.types.ts";

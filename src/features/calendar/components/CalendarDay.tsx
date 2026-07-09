@@ -1,8 +1,8 @@
-import Card from "../../../components/ui/Card.tsx";
+import Card from "@/components/ui/Card.tsx";
 import EventCard from "./EventCard";
 import {getEventPosition} from "../utils/getEventPosition.ts";
 import { getEventsByDate } from "../utils/getEventsByDate";
-import { formatDate } from "../../../components/utils/date";
+import { formatDate } from "@/components/utils/date";
 import type {CalendarEvent} from "../types/calendar.types.ts";
 import {CALENDAR_WEEK_DAYS} from "../constants/calendar.constants.ts";
 

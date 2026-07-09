@@ -1,4 +1,4 @@
-import ArrowIcon from "../../../components/icons/arrow.svg?react";
+import ArrowIcon from "@/components/icons/arrow.svg?react";
 import type {SortDirection} from "../types/calendar.types.ts";
 
 type CalendarTableSortHeaderProps<T extends string> = {

@@ -1,7 +1,7 @@
 import type {CalendarEvent} from "../types/calendar.types.ts";
 import EventCard from "./EventCard.tsx";
-import Modal from "../../../components/ui/Modal.tsx";
-import ModalCloseButton from "../../../components/ui/ModalCloseButton.tsx";
+import Modal from "@/components/ui/Modal.tsx";
+import ModalCloseButton from "@/components/ui/ModalCloseButton.tsx";
 
 type MoreEventsModalProps = {
     date: string | null;

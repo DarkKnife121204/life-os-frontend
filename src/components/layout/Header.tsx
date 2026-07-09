@@ -3,6 +3,7 @@ import { useState } from "react";
 import NotificationIcon from "../icons/notification.svg?react";
 import PrevIcon from "../icons/prev.svg?react";
 import ProfileMenu from "./ProfileMenu";
+import { useUserStore } from "@/store/userStore.ts";
 
 type HeaderProps = {
     title: string;
@@ -10,6 +11,8 @@ type HeaderProps = {
 
 export default function Header({ title }: HeaderProps) {
     const [isProfileOpen, setIsProfileOpen] = useState(false);
+    const user = useUserStore((state) => state.user);
+    const initial = user?.name.charAt(0).toUpperCase();
 
     return (
         <div className="relative mb-4 flex items-center justify-between gap-3 pl-14 md:pl-0">
@@ -29,11 +32,11 @@ export default function Header({ title }: HeaderProps) {
                     >
                         <div
                             className="flex h-10 w-10 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 text-lg md:text-xl shadow-[0_0_14px_rgba(0,255,255,0.18)]">
-                            D
+                            {initial}
                         </div>
 
                         <div className="hidden sm:flex items-center text-zinc-200 hover:text-cyan-300 transition">
-                            DarkKnife
+                            {user?.name}
 
                             <PrevIcon
                                 className={`h-6 w-6 transition-transform duration-300 ${

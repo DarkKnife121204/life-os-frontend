@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useToast } from "../../../app/providers/ToastProvider.tsx";
+import { useToast } from "@/app/providers/ToastProvider.tsx";
 
 type EventFormFields = {
     title: string;

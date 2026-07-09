@@ -1,14 +1,14 @@
-import { colorOptions, priorityOptions, statusOptions, typeOptions } from "../../../components/constants/constants";
+import { colorOptions, priorityOptions, statusOptions, typeOptions } from "@/components/constants/constants";
 import type {CalendarEventFilters} from "../types/calendar.types";
 import {useEventFilters} from "../hooks/useEventFilters";
-import CustomDateDropdown from "../../../components/ui/CustomDateDropdown.tsx";
-import CheckboxGroup from "../../../components/ui/CheckboxGroup";
-import Modal from "../../../components/ui/Modal.tsx";
-import ModalCloseButton from "../../../components/ui/ModalCloseButton.tsx";
-import Button from "../../../components/ui/Button";
-import Input from "../../../components/ui/Input.tsx";
-import FormField from "../../../components/ui/FormField.tsx";
-import SearchIcon from "../../../components/icons/search.svg?react";
+import CustomDateDropdown from "@/components/ui/CustomDateDropdown.tsx";
+import CheckboxGroup from "@/components/ui/CheckboxGroup";
+import Modal from "@/components/ui/Modal.tsx";
+import ModalCloseButton from "@/components/ui/ModalCloseButton.tsx";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input.tsx";
+import FormField from "@/components/ui/FormField.tsx";
+import SearchIcon from "@/components/icons/search.svg?react";
 
 type EventFilterModalProps = {
     isOpen: boolean;

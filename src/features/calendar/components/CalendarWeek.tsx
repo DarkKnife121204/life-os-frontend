@@ -1,4 +1,4 @@
-import Card from "../../../components/ui/Card.tsx";
+import Card from "@/components/ui/Card.tsx";
 import EventCard from "./EventCard";
 import {getWeekDays} from "../utils/getWeekDays.ts";
 import {getEventPosition} from "../utils/getEventPosition";

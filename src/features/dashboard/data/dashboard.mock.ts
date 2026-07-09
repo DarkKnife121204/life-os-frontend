@@ -1,10 +1,10 @@
-import CheckIcon from "../../../components/icons/check.svg?react";
-import CalendarIcon from "../../../components/icons/calendar.svg?react";
-import NoteIcon from "../../../components/icons/note.svg?react";
-import LineIcon from "../../../components/icons/line.svg?react";
-import ClockIcon from "../../../components/icons/clock.svg?react";
-import DashboardIcon from "../../../components/icons/dashboard.svg?react";
-import TaskIcon from "../../../components/icons/tasks.svg?react";
+import CheckIcon from "@/components/icons/check.svg?react";
+import CalendarIcon from "@/components/icons/calendar.svg?react";
+import NoteIcon from "@/components/icons/note.svg?react";
+import LineIcon from "@/components/icons/line.svg?react";
+import ClockIcon from "@/components/icons/clock.svg?react";
+import DashboardIcon from "@/components/icons/dashboard.svg?react";
+import TaskIcon from "@/components/icons/tasks.svg?react";
 
 export const stats = [
     { icon: CheckIcon, value: "12", label: "Tasks Today", color: "text-cyan-300" },
