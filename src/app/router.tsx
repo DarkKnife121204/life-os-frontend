@@ -13,7 +13,7 @@ import Settings from "../pages/Settings";
 import Habit from "../pages/Habit";
 import Health from "../pages/Health";
 import Finance from "../pages/Finance";
-import Calendar from "../pages/Calendar";
+import CalendarPage from "../pages/calendar/CalendarPage.tsx";
 
 function RootLayout() {
     return (
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
                     { path: "/habits", element: <Habit /> },
                     { path: "/health", element: <Health /> },
                     { path: "/finance", element: <Finance /> },
-                    { path: "/calendar", element: <Calendar /> },
+                    { path: "/calendar", element: <CalendarPage /> },
                 ],
             },
         ],

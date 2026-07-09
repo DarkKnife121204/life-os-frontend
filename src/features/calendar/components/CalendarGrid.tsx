@@ -3,8 +3,15 @@ import CalendarCell from "./CalendarCell";
 import { getMonthDays } from "../utils/getMonthDays.ts";
 import { getEventsByDate } from "../utils/getEventsByDate";
 import { FULL_CALENDAR_VIEWS } from "../constants/calendar.constants.ts"
-import type {CalendarGridProps } from "../types/calendar.types.ts";
+import type {CalendarEvent} from "../types/calendar.types.ts";
 
+type CalendarGridProps = {
+    selectedDate: Date;
+    events: CalendarEvent[];
+    isLoading?: boolean;
+    onEventClick?: (event: CalendarEvent) => void;
+    onMoreClick: (date: string) => void;
+};
 export default function CalendarGrid({ selectedDate, events, isLoading = false, onEventClick, onMoreClick}: CalendarGridProps) {
     const year = selectedDate.getFullYear();
     const month = selectedDate.getMonth();

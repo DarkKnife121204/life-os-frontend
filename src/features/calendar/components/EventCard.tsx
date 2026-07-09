@@ -1,6 +1,16 @@
 import {isAllDayEvent} from "../utils/isAllDayEvent";
 import {BG_COLOR_CLASSES, DOT_PRIORITY_CLASSES, TEXT_COLOR_CLASSES, STATUS_CLASSES} from "../constants/calendar.constants.ts";
-import type {EventCardProps} from "../types/calendar.types.ts";
+import type {CalendarEvent} from "../types/calendar.types.ts";
+
+type EventCardProps = {
+    event: CalendarEvent;
+    compact?: boolean;
+    showDescription?: boolean;
+    showType?: boolean;
+    showStatus?: boolean;
+    timeView?: "hidden" | "inline" | "block";
+    onClick?: (event: CalendarEvent) => void;
+};
 
 export default function EventCard({event, compact = false, showDescription = false, showType = false, showStatus = false,
                                       timeView = compact ? "hidden" : "block", onClick}: EventCardProps) {

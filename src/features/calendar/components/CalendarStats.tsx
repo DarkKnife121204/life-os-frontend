@@ -1,9 +1,13 @@
 import Card from "../../../components/ui/Card";
 import {getCalendarStats} from "../utils/getCalendarStats";
 import {CALENDAR_STAT_COLORS, CALENDAR_STAT_ICONS} from "../constants/calendar.constants";
-import type {CalendarProps} from "../types/calendar.types.ts";
+import type {CalendarEvent} from "../types/calendar.types.ts";
 
-export default function CalendarStats({ events }: CalendarProps) {
+export type CalendarStatsProps = {
+    events: CalendarEvent[];
+};
+
+export default function CalendarStats({ events }: CalendarStatsProps ) {
     const calendarStats = getCalendarStats(events);
     return (
         <Card className="p-4">

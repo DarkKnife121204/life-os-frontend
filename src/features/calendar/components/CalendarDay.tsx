@@ -3,8 +3,15 @@ import EventCard from "./EventCard";
 import {getEventPosition} from "../utils/getEventPosition.ts";
 import { getEventsByDate } from "../utils/getEventsByDate";
 import { formatDate } from "../../../components/utils/date";
-import type {CalendarWeekProps} from "../types/calendar.types.ts";
+import type {CalendarEvent} from "../types/calendar.types.ts";
 import {CALENDAR_WEEK_DAYS} from "../constants/calendar.constants.ts";
+
+type CalendarWeekProps = {
+    selectedDate: Date;
+    events: CalendarEvent[];
+    isLoading?: boolean;
+    onEventClick?: (event: CalendarEvent) => void;
+};
 
 export default function CalendarDay({ selectedDate, events, isLoading = false, onEventClick}: CalendarWeekProps) {
     const selectedDateString = formatDate(selectedDate);

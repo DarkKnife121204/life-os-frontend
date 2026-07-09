@@ -1,5 +1,16 @@
-import type { CalendarCellProps } from "../types/calendar.types.ts";
+import type {CalendarEvent} from "../types/calendar.types.ts";
 import EventCard from "./EventCard";
+
+type CalendarCellProps = {
+    day: number;
+    date: string;
+    events: CalendarEvent[];
+    isCurrentMonth: boolean;
+    isSunday: boolean;
+    isToday: boolean;
+    onEventClick?: (event: CalendarEvent) => void;
+    onMoreClick: (date: string) => void;
+};
 
 export default function CalendarCell({day, date, events, isCurrentMonth, isSunday, isToday, onEventClick, onMoreClick,}: CalendarCellProps) {
     const visibleEvents = events.slice(0, 1);

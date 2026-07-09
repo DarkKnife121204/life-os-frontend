@@ -1,6 +1,11 @@
 import { useState } from "react";
-import { updateCalendarEvent } from "../api/calendarApi.ts";
-import type {UseUpdateCalendarEventProps, UpdateCalendarEventPayload} from "../types/calendar.types.ts";
+import {updateCalendarEvent, type UpdateCalendarEventPayload,} from "../api/calendarApi.ts";
+import type { CalendarEvent } from "../types/calendar.types.ts";
+
+type UseUpdateCalendarEventProps = {
+    onEventUpdated: (event: CalendarEvent) => void;
+    onClose: () => void;
+};
 
 export function useUpdateCalendarEvent({onEventUpdated, onClose}: UseUpdateCalendarEventProps) {
     const [isSaving, setIsSaving] = useState(false);

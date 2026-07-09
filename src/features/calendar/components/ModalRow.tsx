@@ -1,4 +1,8 @@
-import type { ModalRowProps } from "../types/calendar.types.ts";
+type ModalRowProps = {
+    icon: React.ReactNode;
+    title: string;
+    value: string;
+};
 
 export function ModalRow({icon, title, value}: ModalRowProps) {
     return (

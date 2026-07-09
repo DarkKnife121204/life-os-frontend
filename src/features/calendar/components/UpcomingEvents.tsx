@@ -2,9 +2,13 @@ import Card from "../../../components/ui/Card";
 import {getUpcomingEvents} from "../utils/getUpcomingEvents";
 import {formatEventDate} from "../utils/formatEventDate";
 import {BG_COLOR_CLASSES, TEXT_COLOR_CLASSES, EVENT_TYPE_ICON} from "../constants/calendar.constants";
-import type {CalendarProps} from "../types/calendar.types.ts";
+import type {CalendarEvent} from "../types/calendar.types.ts";
 
-export default function UpcomingEvents({events}: CalendarProps) {
+type CalendarUpcomingProps = {
+    events: CalendarEvent[];
+};
+
+export default function UpcomingEvents({events}: CalendarUpcomingProps) {
     const upcomingEvents = getUpcomingEvents(events);
 
     return (

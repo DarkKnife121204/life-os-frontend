@@ -4,7 +4,21 @@ import Card from "../../../components/ui/Card.tsx";
 import CalendarTableSortHeader from "./SortHeader";
 import {getPaginationPages} from "../utils/pagination";
 import {BG_COLOR_CLASSES, TEXT_COLOR_CLASSES, DOT_PRIORITY_CLASSES, STATUS_CLASSES, TEXT_PRIORITY_CLASSES, TABLE_HEADERS} from "../constants/calendar.constants.ts";
-import type {CalendarAllEventsProps } from "../types/calendar.types.ts";
+import type {CalendarEvent, PaginationMeta, SortDirection, SortField} from "../types/calendar.types.ts";
+import type {Dispatch, SetStateAction} from "react";
+
+type CalendarAllEventsProps = {
+    events: CalendarEvent[];
+    isLoading: boolean;
+    meta: PaginationMeta | null;
+    page: number;
+    setPage: Dispatch<SetStateAction<number>>;
+
+    sortField: SortField | null;
+    sortDirection: SortDirection | null;
+    onSort: (field: SortField) => void;
+    onEventClick?: (event: CalendarEvent) => void;
+};
 
 export default function CalendarAllEvents({events, isLoading = false, meta, page, setPage, sortField, sortDirection, onSort,
                                               onEventClick}: CalendarAllEventsProps) {

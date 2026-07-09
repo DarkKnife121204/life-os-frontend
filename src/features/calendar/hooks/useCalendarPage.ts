@@ -1,7 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {getCalendarEvents} from "../api/calendarApi";
 import {filterEventsByRange, getCalendarRequestRange, isRangeCovered, mergeEvents, mergeRanges,} from "../utils/getCalendarDateRange";
-import type {CalendarEvent, DateRange, PaginationMeta, UseCalendarEventsProps, SortField, SortDirection} from "../types/calendar.types";
+import type {CalendarEvent, DateRange, PaginationMeta, SortField, SortDirection, CalendarView, CalendarEventFilters} from "../types/calendar.types";
+
+type UseCalendarEventsProps = {
+    view: CalendarView;
+    selectedDate: Date;
+    filters: CalendarEventFilters;
+};
 
 export function useCalendarPage({view, selectedDate, filters}: UseCalendarEventsProps) {
     const [events, setEvents] = useState<CalendarEvent[]>([]);

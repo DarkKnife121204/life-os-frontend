@@ -1,5 +1,13 @@
 import ArrowIcon from "../../../components/icons/arrow.svg?react";
-import type {CalendarTableSortHeaderProps} from "../types/calendar.types.ts";
+import type {SortDirection} from "../types/calendar.types.ts";
+
+type CalendarTableSortHeaderProps<T extends string> = {
+    label: string;
+    field: T;
+    activeField: T | null;
+    direction: SortDirection | null;
+    onSort: (field: T) => void;
+};
 
 export default function CalendarTableSortHeader<T extends string>({label, field, activeField, direction, onSort}: CalendarTableSortHeaderProps<T>) {
     const isActive = activeField === field;

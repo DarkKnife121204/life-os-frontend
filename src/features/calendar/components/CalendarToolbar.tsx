@@ -2,7 +2,17 @@ import PrevIcon from "../../../components/icons/prev.svg?react";
 import {getPrevDateByView, getNextDateByView} from "../utils/calendarNavigation";
 import {CALENDAR_VIEWS} from "../constants/calendar.constants";
 import {MONTH_NAMES} from "../../../components/constants/constants";
-import type {CalendarToolbarProps} from "../types/calendar.types.ts";
+import type {CalendarView} from "../types/calendar.types.ts";
+import type {Dispatch, SetStateAction} from "react";
+
+type CalendarToolbarProps = {
+    view: CalendarView;
+    setView: (view: CalendarView) => void;
+    selectedDate: Date;
+    setSelectedDate: Dispatch<SetStateAction<Date>>;
+    onCreate: () => void;
+    onFilter: () => void;
+};
 
 export default function CalendarToolbar({view, setView, selectedDate, setSelectedDate, onCreate, onFilter}: CalendarToolbarProps) {
     const title = `${MONTH_NAMES[selectedDate.getMonth()]} ${selectedDate.getFullYear()}`;

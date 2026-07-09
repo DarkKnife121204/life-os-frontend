@@ -1,6 +1,68 @@
 import api from "../../../api/api";
-import type { CalendarEvent, BackendCalendarEvent, CalendarEventsParams, CalendarEventsResponse, DropdownOption, UpdateCalendarEventPayload, CreateCalendarEventPayload} from "../types/calendar.types.ts";
+import type {CalendarEvent, DropdownOption, PaginationMeta, SortDirection, SortField} from "../types/calendar.types.ts";
 import {SORT_FIELD_MAP } from "../constants/calendar.constants.ts";
+
+export type CalendarEventsResponse = {
+    events: CalendarEvent[];
+    meta: PaginationMeta | null;
+};
+
+export type CalendarEventsParams = {
+    page?: number;
+    per_page?: number;
+
+    from_date?: string;
+    to_date?: string;
+
+    search?: string;
+    type?: string[];
+    priority?: string[];
+    status?: string[];
+    color?: string[];
+
+    sort?: SortField;
+    order?: SortDirection;
+};
+
+export type BackendCalendarEvent = {
+    id: number;
+    title: string;
+    description: string | null;
+    type: CalendarEvent["type"];
+    priority: CalendarEvent["priority"];
+    status: CalendarEvent["status"];
+    color: CalendarEvent["color"];
+    location: string | null;
+    date: string;
+    start_at: number;
+    end_at: number;
+};
+
+export type UpdateCalendarEventPayload = {
+    title: string;
+    description: string;
+    type: string;
+    priority: string;
+    status: string;
+    date: string;
+    start_at: string;
+    end_at: string;
+    location: string;
+    color: string;
+};
+
+export type CreateCalendarEventPayload = {
+    title: string;
+    description: string;
+    type: string;
+    priority: string;
+    status: string;
+    date: string;
+    start_at: string;
+    end_at: string;
+    location: string;
+    color: string;
+};
 
 function formatTimestampToTime(timestamp: number): string {
     return new Date(timestamp * 1000).toISOString().slice(11, 16);
