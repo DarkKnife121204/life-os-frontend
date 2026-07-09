@@ -29,9 +29,7 @@ export default function AuthGuard() {
 
     if (isLoading) {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-[#02070d] text-cyan-300">
-                Loading...
-            </div>
+            <div className="flex min-h-screen items-center justify-center bg-[#02070d] text-cyan-300">Loading...</div>
         );
     }
 

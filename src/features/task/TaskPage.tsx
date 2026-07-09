@@ -3,5 +3,5 @@ export default function TaskPage() {
         <main className="bg-cyan-50">
             <p>123</p>
         </main>
-    )
+    );
 }

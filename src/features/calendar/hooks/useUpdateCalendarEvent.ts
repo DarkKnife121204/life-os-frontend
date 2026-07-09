@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {updateCalendarEvent, type UpdateCalendarEventPayload,} from "../api/calendarApi.ts";
+import { updateCalendarEvent, type UpdateCalendarEventPayload } from "../api/calendarApi.ts";
 import type { CalendarEvent } from "../types/calendar.types.ts";
 
 type UseUpdateCalendarEventProps = {
@@ -7,13 +7,10 @@ type UseUpdateCalendarEventProps = {
     onClose: () => void;
 };
 
-export function useUpdateCalendarEvent({onEventUpdated, onClose}: UseUpdateCalendarEventProps) {
+export function useUpdateCalendarEvent({ onEventUpdated, onClose }: UseUpdateCalendarEventProps) {
     const [isSaving, setIsSaving] = useState(false);
 
-    async function updateEvent(
-        eventId: number,
-        payload: UpdateCalendarEventPayload
-    ) {
+    async function updateEvent(eventId: number, payload: UpdateCalendarEventPayload) {
         if (isSaving) return;
 
         try {

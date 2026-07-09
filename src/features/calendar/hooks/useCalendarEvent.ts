@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import {getCalendarEvent, deleteCalendarEvent, restoreCalendarEvent, completeCalendarEvent} from "../api/calendarApi.ts";
+import {
+    getCalendarEvent,
+    deleteCalendarEvent,
+    restoreCalendarEvent,
+    completeCalendarEvent,
+} from "../api/calendarApi.ts";
 import type { CalendarEvent } from "../types/calendar.types.ts";
 
 export function useCalendarEvent(eventId: number | null) {

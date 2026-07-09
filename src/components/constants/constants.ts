@@ -1,5 +1,11 @@
-import {TEXT_COLOR_CLASSES, TEXT_PRIORITY_CLASSES, CALENDAR_STAT_ICONS, STATUS_ICON, CALENDAR_STAT_COLORS} from "../../features/calendar/constants/calendar.constants.ts";
-import type {CheckboxGroupOption} from "../types/types.ts";
+import {
+    TEXT_COLOR_CLASSES,
+    TEXT_PRIORITY_CLASSES,
+    CALENDAR_STAT_ICONS,
+    STATUS_ICON,
+    CALENDAR_STAT_COLORS,
+} from "@/features/calendar/constants/calendar.constants.ts";
+import type { CheckboxGroupOption } from "../types/types.ts";
 
 export const MONTH_NAMES = [
     "January",
@@ -16,15 +22,7 @@ export const MONTH_NAMES = [
     "December",
 ] as const;
 
-export const MINI_CALENDAR_VIEWS = [
-    "Mon",
-    "Tue",
-    "Wed",
-    "Thu",
-    "Fri",
-    "Sat",
-    "Sun"
-] as const;
+export const MINI_CALENDAR_VIEWS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] as const;
 
 export const colorOptions: CheckboxGroupOption[] = [
     {

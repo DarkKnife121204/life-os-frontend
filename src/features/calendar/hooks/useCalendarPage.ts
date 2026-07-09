@@ -1,7 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import {getCalendarEvents} from "../api/calendarApi";
-import {filterEventsByRange, getCalendarRequestRange, isRangeCovered, mergeEvents, mergeRanges,} from "../utils/getCalendarDateRange";
-import type {CalendarEvent, DateRange, PaginationMeta, SortField, SortDirection, CalendarView, CalendarEventFilters} from "../types/calendar.types";
+import { getCalendarEvents } from "../api/calendarApi";
+import {
+    filterEventsByRange,
+    getCalendarRequestRange,
+    isRangeCovered,
+    mergeEvents,
+    mergeRanges,
+} from "../utils/getCalendarDateRange";
+import type {
+    CalendarEvent,
+    DateRange,
+    PaginationMeta,
+    SortField,
+    SortDirection,
+    CalendarView,
+    CalendarEventFilters,
+} from "../types/calendar.types";
 
 type UseCalendarEventsProps = {
     view: CalendarView;
@@ -9,7 +23,7 @@ type UseCalendarEventsProps = {
     filters: CalendarEventFilters;
 };
 
-export function useCalendarPage({view, selectedDate, filters}: UseCalendarEventsProps) {
+export function useCalendarPage({ view, selectedDate, filters }: UseCalendarEventsProps) {
     const [events, setEvents] = useState<CalendarEvent[]>([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -86,10 +100,7 @@ export function useCalendarPage({view, selectedDate, filters}: UseCalendarEvents
             }
 
             if (isRangeCovered(loadedRangeRef.current, requestedRange)) {
-                const filteredEvents = filterEventsByRange(
-                    cachedEventsRef.current,
-                    requestedRange
-                );
+                const filteredEvents = filterEventsByRange(cachedEventsRef.current, requestedRange);
 
                 setEvents(filteredEvents);
                 return;
@@ -103,20 +114,11 @@ export function useCalendarPage({view, selectedDate, filters}: UseCalendarEvents
                     ...filters,
                 });
 
-                cachedEventsRef.current = mergeEvents(
-                    cachedEventsRef.current,
-                    response.events
-                );
+                cachedEventsRef.current = mergeEvents(cachedEventsRef.current, response.events);
 
-                loadedRangeRef.current = mergeRanges(
-                    loadedRangeRef.current,
-                    requestedRange
-                );
+                loadedRangeRef.current = mergeRanges(loadedRangeRef.current, requestedRange);
 
-                const filteredEvents = filterEventsByRange(
-                    cachedEventsRef.current,
-                    requestedRange
-                );
+                const filteredEvents = filterEventsByRange(cachedEventsRef.current, requestedRange);
 
                 setEvents(filteredEvents);
             } catch (error) {
@@ -129,7 +131,6 @@ export function useCalendarPage({view, selectedDate, filters}: UseCalendarEvents
         loadEvents();
     }, [view, selectedDate, allEventsPage, allEventsSortField, allEventsSortDirection, filters]);
 
-
     const currentMonthEvents = useMemo(() => {
         const year = selectedDate.getFullYear();
         const month = selectedDate.getMonth();
@@ -137,35 +138,23 @@ export function useCalendarPage({view, selectedDate, filters}: UseCalendarEvents
         return events.filter((event) => {
             const eventDate = new Date(event.date);
 
-            return (
-                eventDate.getFullYear() === year &&
-                eventDate.getMonth() === month
-            );
+            return eventDate.getFullYear() === year && eventDate.getMonth() === month;
         });
     }, [events, selectedDate]);
 
     function updateEventInList(updatedEvent: CalendarEvent) {
-        setEvents((prevEvents) =>
-            prevEvents.map((item) =>
-                item.id === updatedEvent.id ? updatedEvent : item
-            )
-        );
+        setEvents((prevEvents) => prevEvents.map((item) => (item.id === updatedEvent.id ? updatedEvent : item)));
 
         cachedEventsRef.current = cachedEventsRef.current.map((item) =>
-            item.id === updatedEvent.id ? updatedEvent : item
+            item.id === updatedEvent.id ? updatedEvent : item,
         );
     }
 
     function addEventToList(createdEvent: CalendarEvent) {
-        cachedEventsRef.current = mergeEvents(
-            cachedEventsRef.current,
-            [createdEvent]
-        );
+        cachedEventsRef.current = mergeEvents(cachedEventsRef.current, [createdEvent]);
 
         if (view === "All Events") {
-            setEvents((prevEvents) =>
-                mergeEvents(prevEvents, [createdEvent])
-            );
+            setEvents((prevEvents) => mergeEvents(prevEvents, [createdEvent]));
 
             return;
         }
@@ -176,10 +165,7 @@ export function useCalendarPage({view, selectedDate, filters}: UseCalendarEvents
             return;
         }
 
-        const filteredEvents = filterEventsByRange(
-            cachedEventsRef.current,
-            requestedRange
-        );
+        const filteredEvents = filterEventsByRange(cachedEventsRef.current, requestedRange);
 
         setEvents(filteredEvents);
     }
@@ -195,6 +181,6 @@ export function useCalendarPage({view, selectedDate, filters}: UseCalendarEvents
         allEventsSortDirection,
         handleAllEventsSort,
         updateEventInList,
-        addEventToList
+        addEventToList,
     };
 }

@@ -1,7 +1,6 @@
 import { FULL_CALENDAR_VIEWS } from "../constants/calendar.constants";
-import type {CalendarWeekDay} from "../types/calendar.types.ts";
+import type { CalendarWeekDay } from "../types/calendar.types.ts";
 import { formatDate } from "@/components/utils/date";
-
 
 export function getWeekDays(selectedDate: Date): CalendarWeekDay[] {
     const currentDay = selectedDate.getDay() === 0 ? 7 : selectedDate.getDay();

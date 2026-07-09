@@ -1,6 +1,12 @@
 import api from "@/api/api";
-import type {CalendarEvent, DropdownOption, PaginationMeta, SortDirection, SortField} from "../types/calendar.types.ts";
-import {SORT_FIELD_MAP } from "../constants/calendar.constants.ts";
+import type {
+    CalendarEvent,
+    DropdownOption,
+    PaginationMeta,
+    SortDirection,
+    SortField,
+} from "../types/calendar.types.ts";
+import { SORT_FIELD_MAP } from "../constants/calendar.constants.ts";
 
 export type CalendarEventsResponse = {
     events: CalendarEvent[];

@@ -22,15 +22,7 @@ export type CalendarEvent = {
 
 export type CalendarView = "Month" | "Week" | "Day" | "All Events";
 
-export type SortField =
-    | "title"
-    | "type"
-    | "date"
-    | "startTime"
-    | "endTime"
-    | "location"
-    | "priority"
-    | "status";
+export type SortField = "title" | "type" | "date" | "startTime" | "endTime" | "location" | "priority" | "status";
 
 export type SortDirection = "asc" | "desc";
 
@@ -83,6 +75,3 @@ export type PaginationMeta = {
     per_page: number;
     total: number;
 };
-
-
-

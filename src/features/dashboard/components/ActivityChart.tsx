@@ -116,7 +116,10 @@ export default function ActivityChart({ data }: ActivityChartProps) {
                 <span>0%</span>
             </div>
 
-            <canvas ref={canvasRef} className="absolute left-10 md:left-16 right-0 top-0 h-[160px] w-[calc(100%-2.5rem)] md:w-[calc(100%-4rem)]"/>
+            <canvas
+                ref={canvasRef}
+                className="absolute left-10 md:left-16 right-0 top-0 h-[160px] w-[calc(100%-2.5rem)] md:w-[calc(100%-4rem)]"
+            />
 
             <div className="absolute left-10 md:left-16 right-0 bottom-0 flex justify-between text-zinc-400 text-[10px] md:text-sm">
                 {data.map((item) => (

@@ -18,8 +18,5 @@ export function getPaginationPages(currentPage: number, lastPage: number): numbe
         startPage = lastPage - visiblePages + 1;
     }
 
-    return Array.from(
-        { length: endPage - startPage + 1 },
-        (_, index) => startPage + index
-    );
+    return Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
 }

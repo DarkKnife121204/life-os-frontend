@@ -7,15 +7,13 @@ type FormFieldProps = {
     className?: string;
 };
 
-export default function FormField({label, children, required = false, className = ""}: FormFieldProps) {
+export default function FormField({ label, children, required = false, className = "" }: FormFieldProps) {
     return (
         <div className={className}>
             <label className="mb-1 block text-sm font-semibold text-zinc-100">
                 {label}
 
-                {required && (
-                    <span className="text-pink-400"> *</span>
-                )}
+                {required && <span className="text-pink-400"> *</span>}
             </label>
 
             {children}

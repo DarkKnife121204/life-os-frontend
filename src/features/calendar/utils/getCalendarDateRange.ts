@@ -44,10 +44,7 @@ export function isRangeCovered(loadedRange: DateRange | null, requestedRange: Da
         return false;
     }
 
-    return (
-        loadedRange.from_date <= requestedRange.from_date &&
-        loadedRange.to_date >= requestedRange.to_date
-    );
+    return loadedRange.from_date <= requestedRange.from_date && loadedRange.to_date >= requestedRange.to_date;
 }
 
 export function mergeRanges(currentRange: DateRange | null, newRange: DateRange): DateRange {
@@ -56,13 +53,9 @@ export function mergeRanges(currentRange: DateRange | null, newRange: DateRange)
     }
 
     return {
-        from_date: currentRange.from_date < newRange.from_date
-            ? currentRange.from_date
-            : newRange.from_date,
+        from_date: currentRange.from_date < newRange.from_date ? currentRange.from_date : newRange.from_date,
 
-        to_date: currentRange.to_date > newRange.to_date
-            ? currentRange.to_date
-            : newRange.to_date,
+        to_date: currentRange.to_date > newRange.to_date ? currentRange.to_date : newRange.to_date,
     };
 }
 

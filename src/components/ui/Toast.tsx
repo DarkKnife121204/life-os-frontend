@@ -7,7 +7,7 @@ type ToastProps = {
     onClose?: () => void;
 };
 
-export default function Toast({title, message, status, onClose }: ToastProps) {
+export default function Toast({ title, message, status, onClose }: ToastProps) {
     const [closing, setClosing] = useState(false);
 
     useEffect(() => {
@@ -31,20 +31,12 @@ export default function Toast({title, message, status, onClose }: ToastProps) {
             <div className="flex items-start gap-4">
                 <div className="flex-1">
                     <div className="mb-1 flex items-center justify-between gap-3">
-                        <h3 className="text-sm font-bold tracking-wider text-red-400">
-                            {title}
-                        </h3>
+                        <h3 className="text-sm font-bold tracking-wider text-red-400">{title}</h3>
 
-                        {status && (
-                            <span className="text-xs text-red-400/60">
-                                {status}
-                            </span>
-                        )}
+                        {status && <span className="text-xs text-red-400/60">{status}</span>}
                     </div>
 
-                    <p className="text-xs leading-relaxed text-red-200/80">
-                        {message}
-                    </p>
+                    <p className="text-xs leading-relaxed text-red-200/80">{message}</p>
                 </div>
 
                 <button

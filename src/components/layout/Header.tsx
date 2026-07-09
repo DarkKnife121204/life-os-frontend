@@ -16,13 +16,11 @@ export default function Header({ title }: HeaderProps) {
 
     return (
         <div className="relative mb-4 flex items-center justify-between gap-3 pl-14 md:pl-0">
-            <h1 className="min-w-0 truncate text-2xl tracking-wide md:text-3xl">
-                {title}
-            </h1>
+            <h1 className="min-w-0 truncate text-2xl tracking-wide md:text-3xl">{title}</h1>
 
             <div className="flex shrink-0 items-center gap-3 md:gap-5">
                 <button className="text-zinc-300 cursor-pointer hover:text-cyan-300 transition">
-                    <NotificationIcon className="h-5 w-5 md:h-6 md:w-6"/>
+                    <NotificationIcon className="h-5 w-5 md:h-6 md:w-6" />
                 </button>
 
                 <div className="relative">
@@ -30,8 +28,7 @@ export default function Header({ title }: HeaderProps) {
                         onClick={() => setIsProfileOpen((prev) => !prev)}
                         className="flex items-center gap-2 md:gap-3 cursor-pointer"
                     >
-                        <div
-                            className="flex h-10 w-10 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 text-lg md:text-xl shadow-[0_0_14px_rgba(0,255,255,0.18)]">
+                        <div className="flex h-10 w-10 md:h-11 md:w-11 shrink-0 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 text-lg md:text-xl shadow-[0_0_14px_rgba(0,255,255,0.18)]">
                             {initial}
                         </div>
 
@@ -46,7 +43,7 @@ export default function Header({ title }: HeaderProps) {
                         </div>
                     </button>
 
-                    {isProfileOpen && <ProfileMenu/>}
+                    {isProfileOpen && <ProfileMenu />}
                 </div>
             </div>
         </div>

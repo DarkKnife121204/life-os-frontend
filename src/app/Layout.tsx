@@ -5,9 +5,7 @@ import Header from "../components/layout/Header";
 export default function Layout() {
     const location = useLocation();
 
-    const title = location.pathname === "/calendar"
-        ? "Calendar"
-        : null;
+    const title = location.pathname === "/calendar" ? "Calendar" : null;
 
     return (
         <div className="flex min-h-screen bg-[#02070d]">

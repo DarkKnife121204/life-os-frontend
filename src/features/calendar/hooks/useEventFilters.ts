@@ -1,24 +1,16 @@
 import { useState } from "react";
-import {colorOptions, priorityOptions, statusOptions, typeOptions} from "@/components/constants/constants";
+import { colorOptions, priorityOptions, statusOptions, typeOptions } from "@/components/constants/constants";
 
 export function useEventFilters() {
     const [search, setSearch] = useState("");
 
-    const [types, setTypes] = useState<string[]>(
-        typeOptions.map((option) => option.value)
-    );
+    const [types, setTypes] = useState<string[]>(typeOptions.map((option) => option.value));
 
-    const [priorities, setPriorities] = useState<string[]>(
-        priorityOptions.map((option) => option.value)
-    );
+    const [priorities, setPriorities] = useState<string[]>(priorityOptions.map((option) => option.value));
 
-    const [statuses, setStatuses] = useState<string[]>(
-        statusOptions.map((option) => option.value)
-    );
+    const [statuses, setStatuses] = useState<string[]>(statusOptions.map((option) => option.value));
 
-    const [colors, setColors] = useState<string[]>(
-        colorOptions.map((option) => option.value)
-    );
+    const [colors, setColors] = useState<string[]>(colorOptions.map((option) => option.value));
 
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
@@ -61,6 +53,6 @@ export function useEventFilters() {
         toDate,
         setToDate,
         resetFilters,
-        getFilters
+        getFilters,
     };
 }

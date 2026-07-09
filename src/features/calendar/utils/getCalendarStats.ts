@@ -1,5 +1,5 @@
 import { getMinutesFromTime } from "./date";
-import type {CalendarEvent} from "../types/calendar.types.ts";
+import type { CalendarEvent } from "../types/calendar.types.ts";
 
 function formatTotalTime(totalMinutes: number): string {
     const hours = Math.floor(totalMinutes / 60);

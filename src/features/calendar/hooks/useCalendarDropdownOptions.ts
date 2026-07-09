@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import {getEventPriorityOptions, getEventStatusOptions, getEventTypeOptions, getEventColorsOptions} from "../api/calendarApi.ts";
+import {
+    getEventPriorityOptions,
+    getEventStatusOptions,
+    getEventTypeOptions,
+    getEventColorsOptions,
+} from "../api/calendarApi.ts";
 import type { CalendarDropdownOptions } from "../types/calendar.types.ts";
 
 const defaultOptions: CalendarDropdownOptions = {
@@ -31,7 +36,7 @@ export function useCalendarDropdownOptions(enabled = true) {
                     types,
                     priorities,
                     statuses,
-                    colors
+                    colors,
                 });
             } catch (error) {
                 console.error("Failed to load calendar dropdown options", error);

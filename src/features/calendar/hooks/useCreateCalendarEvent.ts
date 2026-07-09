@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { createCalendarEvent, type CreateCalendarEventPayload} from "../api/calendarApi.ts";
-import type {CalendarEvent} from "../types/calendar.types.ts";
+import { createCalendarEvent, type CreateCalendarEventPayload } from "../api/calendarApi.ts";
+import type { CalendarEvent } from "../types/calendar.types.ts";
 
 type UseCreateCalendarEventProps = {
     onEventCreated: (event: CalendarEvent) => void;

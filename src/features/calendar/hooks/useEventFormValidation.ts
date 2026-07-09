@@ -33,9 +33,7 @@ export function useEventFormValidation(fields: EventFormFields) {
 
     const errors = submitted
         ? requiredFields
-        : Object.fromEntries(
-            Object.keys(requiredFields).map((key) => [key, false])
-        );
+        : Object.fromEntries(Object.keys(requiredFields).map((key) => [key, false]));
 
     function validate() {
         setSubmitted(true);
