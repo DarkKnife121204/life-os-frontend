@@ -10,10 +10,9 @@ type CalendarWeekProps = {
     selectedDate: Date;
     events: CalendarEvent[];
     isLoading?: boolean;
-    onEventClick?: (event: CalendarEvent) => void;
 };
 
-export default function CalendarWeek({ selectedDate, events, isLoading = false, onEventClick }: CalendarWeekProps) {
+export default function CalendarWeek({ selectedDate, events, isLoading = false }: CalendarWeekProps) {
     const calendarWeekDays = getWeekDays(selectedDate);
 
     const ALL_DAY_ROW_HEIGHT = 52;
@@ -88,12 +87,7 @@ export default function CalendarWeek({ selectedDate, events, isLoading = false, 
                                     >
                                         <div className="flex flex-col gap-2">
                                             {allDayEvents.map((event) => (
-                                                <EventCard
-                                                    key={event.id}
-                                                    event={event}
-                                                    compact
-                                                    onClick={onEventClick}
-                                                />
+                                                <EventCard key={event.id} event={event} compact />
                                             ))}
                                         </div>
                                     </div>
@@ -111,7 +105,7 @@ export default function CalendarWeek({ selectedDate, events, isLoading = false, 
                                                 style={position}
                                                 className="absolute left-2 right-2 [&>div]:h-full [&>div]:overflow-hidden"
                                             >
-                                                <EventCard event={event} onClick={onEventClick} />
+                                                <EventCard event={event} />
                                             </div>
                                         );
                                     })}

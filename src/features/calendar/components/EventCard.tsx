@@ -6,6 +6,7 @@ import {
     STATUS_CLASSES,
 } from "../constants/calendar.constants.ts";
 import type { CalendarEvent } from "../types/calendar.types.ts";
+import { useCalendarEventContext } from "../context/CalendarEventContext";
 
 type EventCardProps = {
     event: CalendarEvent;
@@ -14,7 +15,7 @@ type EventCardProps = {
     showType?: boolean;
     showStatus?: boolean;
     timeView?: "hidden" | "inline" | "block";
-    onClick?: (event: CalendarEvent) => void;
+    onClick?: () => void;
 };
 
 export default function EventCard({
@@ -28,10 +29,10 @@ export default function EventCard({
 }: EventCardProps) {
     const isAllDay = isAllDayEvent(event.startTime, event.endTime);
     const timeText = isAllDay ? "All day" : `${event.startTime} - ${event.endTime}`;
-
+    const { openEvent } = useCalendarEventContext();
     return (
         <div
-            onClick={() => onClick?.(event)}
+            onClick={onClick ?? (() => openEvent(event))}
             className={`flex cursor-pointer items-center justify-between rounded-md border-l-2 px-2 text-xs 
             backdrop-blur-xl transition hover:scale-[1.01] hover:brightness-125
             ${compact ? "h-[40px] py-1" : "py-1"} ${BG_COLOR_CLASSES[event.color]} ${TEXT_COLOR_CLASSES[event.color]}`}

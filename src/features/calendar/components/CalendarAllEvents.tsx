@@ -3,6 +3,7 @@ import SearchIcon from "@/components/icons/search.svg?react";
 import Card from "@/components/ui/Card.tsx";
 import CalendarTableSortHeader from "./SortHeader";
 import { getPaginationPages } from "../utils/pagination";
+import { useCalendarEventContext } from "../context/CalendarEventContext";
 import {
     BG_COLOR_CLASSES,
     TEXT_COLOR_CLASSES,
@@ -24,7 +25,6 @@ type CalendarAllEventsProps = {
     sortField: SortField | null;
     sortDirection: SortDirection | null;
     onSort: (field: SortField) => void;
-    onEventClick?: (event: CalendarEvent) => void;
 };
 
 export default function CalendarAllEvents({
@@ -36,10 +36,9 @@ export default function CalendarAllEvents({
     sortField,
     sortDirection,
     onSort,
-    onEventClick,
 }: CalendarAllEventsProps) {
     const paginationPages = meta ? getPaginationPages(meta.current_page, meta.last_page) : [];
-
+    const { openEvent } = useCalendarEventContext();
     return (
         <Card className="h-full min-h-0 overflow-hidden flex flex-col">
             <div className="flex h-full min-h-0 flex-col p-5">
@@ -86,7 +85,7 @@ export default function CalendarAllEvents({
                                 {events.map((event) => (
                                     <tr
                                         key={event.id}
-                                        onClick={() => onEventClick?.(event)}
+                                        onClick={() => openEvent(event)}
                                         className="cursor-pointer border-b border-cyan-400/10 transition hover:bg-cyan-400/2"
                                     >
                                         <td className="px-4 py-3">

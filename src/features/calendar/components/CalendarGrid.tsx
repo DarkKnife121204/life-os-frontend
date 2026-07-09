@@ -9,16 +9,8 @@ type CalendarGridProps = {
     selectedDate: Date;
     events: CalendarEvent[];
     isLoading?: boolean;
-    onEventClick?: (event: CalendarEvent) => void;
-    onMoreClick: (date: string) => void;
 };
-export default function CalendarGrid({
-    selectedDate,
-    events,
-    isLoading = false,
-    onEventClick,
-    onMoreClick,
-}: CalendarGridProps) {
+export default function CalendarGrid({ selectedDate, events, isLoading = false }: CalendarGridProps) {
     const year = selectedDate.getFullYear();
     const month = selectedDate.getMonth();
     const calendarDays = getMonthDays(year, month);
@@ -52,8 +44,6 @@ export default function CalendarGrid({
                                 isCurrentMonth={item.isCurrentMonth}
                                 isSunday={item.isSunday}
                                 isToday={item.isToday}
-                                onEventClick={onEventClick}
-                                onMoreClick={onMoreClick}
                             />
                         );
                     })}

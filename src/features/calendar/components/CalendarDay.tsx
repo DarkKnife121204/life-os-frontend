@@ -10,10 +10,9 @@ type CalendarWeekProps = {
     selectedDate: Date;
     events: CalendarEvent[];
     isLoading?: boolean;
-    onEventClick?: (event: CalendarEvent) => void;
 };
 
-export default function CalendarDay({ selectedDate, events, isLoading = false, onEventClick }: CalendarWeekProps) {
+export default function CalendarDay({ selectedDate, events, isLoading = false }: CalendarWeekProps) {
     const selectedDateString = formatDate(selectedDate);
 
     const { dayEvents, allDayEvents, timedEvents } = getEventsByDate(events, selectedDateString);
@@ -76,7 +75,6 @@ export default function CalendarDay({ selectedDate, events, isLoading = false, o
                                             showDescription
                                             showType
                                             showStatus
-                                            onClick={onEventClick}
                                         />
                                     ))}
                                 </div>
@@ -101,7 +99,6 @@ export default function CalendarDay({ selectedDate, events, isLoading = false, o
                                             showType
                                             showStatus
                                             timeView={"inline"}
-                                            onClick={onEventClick}
                                         />
                                     </div>
                                 );

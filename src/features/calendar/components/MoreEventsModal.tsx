@@ -2,12 +2,12 @@ import type { CalendarEvent } from "../types/calendar.types.ts";
 import EventCard from "./EventCard.tsx";
 import Modal from "@/components/ui/Modal.tsx";
 import ModalCloseButton from "@/components/ui/ModalCloseButton.tsx";
+import { useCalendarEventContext } from "../context/CalendarEventContext";
 
 type MoreEventsModalProps = {
     date: string | null;
     events: CalendarEvent[];
     onClose: () => void;
-    onEventClick: (event: CalendarEvent) => void;
 };
 
 function formatModalDate(date: string | null) {
@@ -20,7 +20,9 @@ function formatModalDate(date: string | null) {
     });
 }
 
-export default function MoreEventsModal({ date, events, onClose, onEventClick }: MoreEventsModalProps) {
+export default function MoreEventsModal({ date, events, onClose }: MoreEventsModalProps) {
+    const { openEvent } = useCalendarEventContext();
+
     if (!date) return null;
     return (
         <Modal>
@@ -40,7 +42,7 @@ export default function MoreEventsModal({ date, events, onClose, onEventClick }:
                         event={event}
                         onClick={() => {
                             onClose();
-                            onEventClick(event);
+                            openEvent(event);
                         }}
                         showType
                         showStatus
