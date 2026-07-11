@@ -4,6 +4,8 @@ import Card from "@/components/ui/Card.tsx";
 import CalendarTableSortHeader from "./SortHeader";
 import { getPaginationPages } from "../utils/pagination";
 import { useCalendarEventContext } from "../context/CalendarEventContext";
+import Input from "@/components/ui/Input.tsx";
+import { useAllEventsSearch } from "../hooks/useAllEventsSearch";
 import {
     BG_COLOR_CLASSES,
     TEXT_COLOR_CLASSES,
@@ -25,6 +27,8 @@ type CalendarAllEventsProps = {
     sortField: SortField | null;
     sortDirection: SortDirection | null;
     onSort: (field: SortField) => void;
+    search: string;
+    onSearchChange: (search: string) => void;
 };
 
 export default function CalendarAllEvents({
@@ -36,28 +40,29 @@ export default function CalendarAllEvents({
     sortField,
     sortDirection,
     onSort,
+    search,
+    onSearchChange,
 }: CalendarAllEventsProps) {
     const paginationPages = meta ? getPaginationPages(meta.current_page, meta.last_page) : [];
     const { openEvent } = useCalendarEventContext();
+    const { search: searchValue, setSearch: setSearchValue } = useAllEventsSearch({
+        value: search,
+        onChange: onSearchChange,
+    });
     return (
         <Card className="h-full min-h-0 overflow-hidden flex flex-col">
             <div className="flex h-full min-h-0 flex-col p-5">
                 <div className="shrink-0 mb-5 grid grid-cols-1 gap-3 lg:grid-cols-[1fr_165px_120px_150px_auto_auto]">
-                    <label className="relative block">
-                        <input
-                            type="text"
+                    <div className="relative max-w-xl">
+                        <Input
+                            value={searchValue}
+                            onChange={(event) => setSearchValue(event.target.value)}
                             placeholder="Search events..."
-                            className="h-10 w-full rounded-lg border border-cyan-400/15 bg-[#030D14] px-4 pr-12 text-sm text-zinc-100
-                            placeholder:text-zinc-400 outline-none transition focus:border-cyan-400/50 focus:shadow-[0_0_18px_rgba(0,255,255,0.15)]"
+                            className="h-10 pr-10 text-sm"
                         />
-                        <button
-                            type="button"
-                            className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-zinc-500 transition
-                            hover:text-cyan-300 cursor-pointer"
-                        >
-                            <SearchIcon className="h-5 w-5" />
-                        </button>
-                    </label>
+
+                        <SearchIcon className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-500" />
+                    </div>
                 </div>
 
                 {isLoading && events.length === 0 ? (

@@ -14,9 +14,15 @@ type EventFilterModalProps = {
     isOpen: boolean;
     onClose: () => void;
     onApply: (filters: CalendarEventFilters) => void;
+    initialFilters: CalendarEventFilters;
 };
 
-export default function EventFilterModal({ isOpen, onClose, onApply }: EventFilterModalProps) {
+export default function EventFilterModal({
+    isOpen,
+    onClose,
+    onApply,
+    initialFilters,
+}: EventFilterModalProps) {
     const {
         search,
         setSearch,
@@ -34,7 +40,7 @@ export default function EventFilterModal({ isOpen, onClose, onApply }: EventFilt
         setToDate,
         resetFilters,
         getFilters,
-    } = useEventFilters();
+    } = useEventFilters(initialFilters);
     if (!isOpen) return null;
 
     function handleApply() {

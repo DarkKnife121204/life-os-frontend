@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { colorOptions, priorityOptions, statusOptions, typeOptions } from "@/components/constants/constants";
+import type { CalendarEventFilters } from "../types/calendar.types";
 
-export function useEventFilters() {
-    const [search, setSearch] = useState("");
+export function useEventFilters(initialFilters: CalendarEventFilters) {
+    const [search, setSearch] = useState(initialFilters.search ?? "");
 
     const [types, setTypes] = useState<string[]>(typeOptions.map((option) => option.value));
 

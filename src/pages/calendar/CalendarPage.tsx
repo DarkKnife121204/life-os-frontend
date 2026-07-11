@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useCalendarPage } from "@/features/calendar/hooks/useCalendarPage.ts";
 import { useEventShowModal } from "@/features/calendar/hooks/useEventShowModal.ts";
 import { useEventEditModal } from "@/features/calendar/hooks/useEventEditModal.ts";
@@ -60,6 +60,22 @@ export default function CalendarPage() {
         }
     }
 
+    const handleSearchChange = useCallback(
+        (search: string) => {
+            setAllEventsPage(1);
+
+            setFilters((currentFilters) => ({
+                ...currentFilters,
+                search: search || undefined,
+            }));
+        },
+        [setAllEventsPage],
+    );
+
+    function handleApplyFilters(modalFilters: CalendarEventFilters) {
+        setAllEventsPage(1);
+        setFilters(modalFilters);
+    }
     return (
         <>
             <CalendarEventProvider
@@ -100,6 +116,8 @@ export default function CalendarPage() {
                                         sortField={allEventsSortField}
                                         sortDirection={allEventsSortDirection}
                                         onSort={handleAllEventsSort}
+                                        search={filters.search ?? ""}
+                                        onSearchChange={handleSearchChange}
                                     />
                                 )}
                             </div>
@@ -130,7 +148,12 @@ export default function CalendarPage() {
                     onEventCreated={addEventToList}
                 />
                 <MoreEventsModal date={moreEventsDate} events={moreEvents} onClose={closeMoreEventsModal} />
-                <EventFilterModal isOpen={isFilterModalOpen} onClose={closeFilterModal} onApply={setFilters} />
+                <EventFilterModal
+                    isOpen={isFilterModalOpen}
+                    onClose={closeFilterModal}
+                    onApply={handleApplyFilters}
+                    initialFilters={filters}
+                />
             </CalendarEventProvider>
         </>
     );
